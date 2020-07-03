@@ -1,0 +1,45 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "changelog": "conventional-changelog -p angular -i ChangeLog.md -s -r 0",
+    "commit": "git-cz"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^9.0.1",
+    "commitlint": "^9.0.1",
+    "conventional-changelog": "^3.1.21",
+    "cz-conventional-changelog": "^3.2.0",
+    "doctoc": "^1.4.0",
+    "husky": "^4.2.5",
+    "lerna": "^3.22.1",
+    "lint-staged": "^10.2.11"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e $GIT_PARAMS",
+      "pre-push": "yarn changelog"
+    }
+  },
+  "lint-staged": {
+    "README.md": [
+      "doctoc --notitle",
+      "git add"
+    ]
+  },
+  "description": "<!-- START doctoc generated TOC please keep comment here to allow auto update --> <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dragon-ball-p/dragon-ball.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dragon-ball-p/dragon-ball/issues"
+  },
+  "homepage": "https://github.com/dragon-ball-p/dragon-ball#readme"
+}
