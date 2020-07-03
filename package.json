@@ -31,7 +31,7 @@
     }
   },
   "lint-staged": {
-    "**/README.md": [
+    "README.md": [
       "doctoc --notitle",
       "git add"
     ]
