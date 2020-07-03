@@ -1,6 +1,9 @@
 {
   "name": "root",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "changelog": "conventional-changelog -p angular -i ChangeLog.md -s -r 0",
     "commit": "git-cz"
