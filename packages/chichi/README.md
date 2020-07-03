@@ -5,6 +5,7 @@
 
 
 - [Usage](#usage)
+- [Todo](#todo)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -17,3 +18,5 @@ const chichi = require('@dragon-ball/chichi');
 
 // TODO: DEMONSTRATE API
 ```
+
+## Todo
