@@ -1,13 +1,12 @@
+# `@dragon-ball/chichi`
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [`@dragon-ball/chichi`](#dragon-ballchichi)
-  - [Usage](#usage)
+- [Usage](#usage)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-# `@dragon-ball/chichi`
 
 > TODO: description
 
