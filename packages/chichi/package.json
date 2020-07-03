@@ -1,11 +1,11 @@
 {
-  "name": "@dragon-ball/goku",
+  "name": "@dragon-ball/chichi",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "poplark <songkang666@126.com>",
-  "homepage": "https://github.com/dragon-ball-p/dragon-ball/tree/master/packages/goku#readme",
+  "homepage": "https://github.com/dragon-ball-p/dragon-ball/tree/master/packages/chichi#readme",
   "license": "ISC",
-  "main": "lib/goku.js",
+  "main": "lib/chichi.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
