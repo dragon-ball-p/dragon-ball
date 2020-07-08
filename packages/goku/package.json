@@ -2,9 +2,13 @@
   "name": "@dragon-ball/goku",
   "version": "0.0.0",
   "description": "> TODO: description",
-  "author": "poplark <songkang666@126.com>",
+  "author": {
+    "name": "poplark",
+    "email": "songkang666@126.com",
+    "url": "https://github.com/poplark"
+  },
   "homepage": "https://github.com/dragon-ball-p/dragon-ball/tree/master/packages/goku#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/goku.js",
   "directories": {
     "lib": "lib",
@@ -21,9 +25,20 @@
     "url": "git+https://github.com/dragon-ball-p/dragon-ball.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "build": "webpack --config webpack.config.js"
   },
   "bugs": {
     "url": "https://github.com/dragon-ball-p/dragon-ball/issues"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.41",
+    "@types/react-dom": "^16.9.8"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "dependencies": {
+    "bulma": "^0.9.0"
   }
 }

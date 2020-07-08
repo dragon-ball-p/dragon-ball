@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es6",
+    "rootDir": "src",
+    "outDir": "types",
+    "newLine": "LF",
+    "jsx": "react",
+    "lib": ["dom", "es2018"],
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "declaration": true,
+    "pretty": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "downlevelIteration": false,
+  },
+  "exclude": [
+    "lib",
+    "es",
+    "node_modules",
+    "dist",
+    "__tests__"
+  ],
+  "include": ["src"]
+}
+
