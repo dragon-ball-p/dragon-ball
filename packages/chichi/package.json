@@ -1,8 +1,12 @@
 {
   "name": "@dragon-ball/chichi",
   "version": "0.0.0",
-  "description": "> TODO: description",
-  "author": "poplark <songkang666@126.com>",
+  "description": "dragon ball site",
+  "author": {
+    "name": "poplark",
+    "email": "songkang666@126.com",
+    "url": "https://github.com/poplark"
+  },
   "homepage": "https://github.com/dragon-ball-p/dragon-ball/tree/master/packages/chichi#readme",
   "license": "ISC",
   "main": "lib/chichi.js",
@@ -14,7 +18,7 @@
     "lib"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "restricted"
   },
   "repository": {
     "type": "git",
@@ -25,5 +29,10 @@
   },
   "bugs": {
     "url": "https://github.com/dragon-ball-p/dragon-ball/issues"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0"
   }
 }
