@@ -1,0 +1,33 @@
+{
+  "name": "@dragon-ball/power-pole",
+  "version": "0.0.0",
+  "description": "dragon-ball utils",
+  "author": {
+    "name": "poplark",
+    "email": "songkang666@126.com",
+    "url": "https://github.com/poplark"
+  },
+  "homepage": "https://github.com/dragon-ball-p/dragon-ball/tree/master/packages/power-pole#readme",
+  "license": "MIT",
+  "main": "lib/power-pole.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dragon-ball-p/dragon-ball.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/dragon-ball-p/dragon-ball/issues"
+  }
+}
