@@ -8,7 +8,7 @@
     "url": "https://github.com/poplark"
   },
   "homepage": "https://github.com/dragon-ball-p/dragon-ball/tree/master/packages/chichi#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/chichi.js",
   "directories": {
     "lib": "lib",
@@ -31,6 +31,7 @@
     "url": "https://github.com/dragon-ball-p/dragon-ball/issues"
   },
   "peerDependencies": {
+    "bulma": "^0.9.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0"
