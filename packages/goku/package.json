@@ -1,7 +1,7 @@
 {
   "name": "@dragon-ball/goku",
   "version": "0.0.0",
-  "description": "> TODO: description",
+  "description": "dragon ball react components",
   "author": {
     "name": "poplark",
     "email": "songkang666@126.com",
@@ -35,10 +35,12 @@
     "@types/react-dom": "^16.9.8"
   },
   "peerDependencies": {
+    "bulma": "^0.9.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "dependencies": {
-    "bulma": "^0.9.0"
+    "omit.js": "^1.0.2",
+    "unique-classnames": "^1.0.9"
   }
 }
