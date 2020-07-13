@@ -17,7 +17,7 @@
     "noUnusedParameters": true,
     "removeComments": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": false,
+    "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "strict": false,
