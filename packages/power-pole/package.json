@@ -10,6 +10,7 @@
   "homepage": "https://github.com/dragon-ball-p/dragon-ball/tree/master/packages/power-pole#readme",
   "license": "MIT",
   "main": "lib/power-pole.js",
+  "types": "types",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
