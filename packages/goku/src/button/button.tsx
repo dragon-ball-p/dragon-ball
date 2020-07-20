@@ -30,6 +30,8 @@ const IButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, re
 
   const buttonRef = (ref as any) || React.createRef<HTMLElement>();
 
+  const typeCls = `is-${type}`;
+
   let sizeCls = '';
   switch (size || globalSize) {
     case 'small':
@@ -47,7 +49,7 @@ const IButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, re
 
   let stateCls = '';
   let isLoading = false;
-  switch (status) {
+  switch (state) {
     case 'hover':
       stateCls = 'is-hovered';
       break;
@@ -64,7 +66,7 @@ const IButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, re
     default:
       break;
   }
-  const cls = classNames(ButtonBaseCls, className, sizeCls, stateCls);
+  const cls = classNames(ButtonBaseCls, className, typeCls, sizeCls, stateCls);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>) => {
     const { onClick } = props;
