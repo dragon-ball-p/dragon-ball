@@ -16,8 +16,9 @@ module.exports = {
   plugins: [
     // ...
     '@typescript-eslint',
-    'prettier',
+    'react',
     'react-hooks',
+    'prettier',
   ],
   rules: {
     // ...
@@ -25,5 +26,7 @@ module.exports = {
     'prettier/prettier': ['error'],
     'react-hooks/rules-of-hooks': 'error', // 检查 Hook 的规则
     'react-hooks/exhaustive-deps': 'warn', // 检查 effect 的依赖
+    'react/jsx-uses-react': 'warn',
+    'react/jsx-uses-vars': 'warn',
   },
 };
