@@ -25,8 +25,8 @@
     "url": "git+https://github.com/dragon-ball-p/dragon-ball.git"
   },
   "scripts": {
-    "dev": "webpack --config webpack.dev.js",
-    "build": "webpack --config webpack.config.js"
+    "start": "webpack --progress --display-chunks -p --watch --mode development",
+    "build": "webpack --progress --display-chunks -p --config webpack.config.js"
   },
   "bugs": {
     "url": "https://github.com/dragon-ball-p/dragon-ball/issues"
@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "omit.js": "^1.0.2"
+    "omit.js": "^1.0.2",
+    "utility-types": "^3.10.0"
   }
 }
