@@ -23,12 +23,12 @@ export interface ButtonProps {
   onClick?: React.MouseEventHandler<HTMLElement>;
 }
 
-const IButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
-  const { type, size, state, className, children, ...rest } = props;
+const IButton: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (props, ref) => {
+  const { type, size, state, className, children, ...others } = props;
 
   const globalSize = React.useContext(SizeContext);
 
-  const buttonRef = (ref as any) || React.createRef<HTMLElement>();
+  const buttonRef = ref || React.createRef<HTMLButtonElement>();
 
   const typeCls = `is-${type}`;
 
@@ -79,7 +79,7 @@ const IButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, re
   };
 
   const result = (
-    <button className={cls} onClick={handleClick} ref={buttonRef} {...rest}>
+    <button className={cls} onClick={handleClick} ref={buttonRef} {...others}>
       {children}
     </button>
   );
@@ -87,7 +87,7 @@ const IButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, re
   return result;
 };
 
-const Button = React.forwardRef<unknown, ButtonProps>(IButton);
+const Button = React.forwardRef(IButton);
 Button.displayName = 'Button';
 Button.defaultProps = {
   type: 'default',
