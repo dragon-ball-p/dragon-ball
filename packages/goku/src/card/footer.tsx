@@ -17,8 +17,10 @@ const CardFooter: React.FC<CardFooterProps> = (props) => {
 
   return (
     <footer {...others} className={cls} style={style}>
-      {items?.map((item) => (
-        <p className={icls}>{item}</p>
+      {items?.map((item, idx) => (
+        <p key={idx} className={icls}>
+          {item}
+        </p>
       ))}
       {children}
     </footer>
