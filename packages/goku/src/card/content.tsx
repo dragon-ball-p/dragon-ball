@@ -5,10 +5,9 @@ export interface CardContentProps {
   className?: string;
   style?: React.CSSProperties;
   prefix?: string;
-  children?: React.ReactNode;
 }
 
-const CardContent: React.FC<CardContentProps> = (props) => {
+export const CardContent: React.FC<CardContentProps> = (props) => {
   const { className, style, prefix, children, ...others } = props;
 
   const cls = classNames(`${prefix}card-content`, className);
@@ -25,5 +24,3 @@ CardContent.defaultProps = {
 };
 
 CardContent.displayName = 'CardContent';
-
-export default CardContent;

@@ -5,10 +5,9 @@ export interface CardImageProps {
   className?: string;
   style?: React.CSSProperties;
   prefix?: string;
-  children?: React.ReactNode;
 }
 
-const CardImage: React.FC<CardImageProps> = (props) => {
+export const CardImage: React.FC<CardImageProps> = (props) => {
   const { className, style, prefix, children, ...others } = props;
 
   const cls = classNames(`${prefix}card-image`, className);
@@ -25,5 +24,3 @@ CardImage.defaultProps = {
 };
 
 CardImage.displayName = 'CardImage';
-
-export default CardImage;

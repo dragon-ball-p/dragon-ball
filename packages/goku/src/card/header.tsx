@@ -2,16 +2,14 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 export interface CardHeaderProps {
-  title?: React.ReactNode;
   icon?: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
   prefix?: string;
-  children?: React.ReactNode;
 }
 
-const CardHeader: React.FC<CardHeaderProps> = (props) => {
-  const { title, icon, className, style, prefix, children, ...others } = props;
+export const CardHeader: React.FC<CardHeaderProps> = (props) => {
+  const { icon, className, style, prefix, children, ...others } = props;
 
   const cls = classNames(`${prefix}card-header`, className);
   const tcls = classNames(`${prefix}card-header-title`);
@@ -19,9 +17,8 @@ const CardHeader: React.FC<CardHeaderProps> = (props) => {
 
   return (
     <header {...others} className={cls} style={style}>
-      {title ? <p className={tcls}>title</p> : null}
-      {children}
-      {icon ? <p className={icls}></p> : null}
+      <div className={tcls}>{children}</div>
+      {icon ? <div className={icls}></div> : null}
     </header>
   );
 };
@@ -31,5 +28,3 @@ CardHeader.defaultProps = {
 };
 
 CardHeader.displayName = 'CardHeader';
-
-export default CardHeader;
