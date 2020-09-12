@@ -1,5 +1,6 @@
 {
   "name": "root",
+  "private": true,
   "workspaces": [
     "packages/*"
   ],
@@ -9,7 +10,7 @@
     "lint:chichi": "eslint packages/chichi/src --ext .tsx",
     "lint:goku": "eslint packages/goku/src --ext .tsx",
     "commit": "git-cz",
-    "build": "learn run --stream --sort build"
+    "build": "lerna run --stream --sort build"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
