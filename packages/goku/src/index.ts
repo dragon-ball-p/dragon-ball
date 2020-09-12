@@ -2,6 +2,7 @@ export { default as Button } from './button';
 export { default as Title } from './title';
 export { default as Card } from './card';
 export { default as Input } from './input';
+export { default as Notifcation } from './notification';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-ignore
