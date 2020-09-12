@@ -19,11 +19,10 @@ export interface ButtonProps {
 
   className?: string;
   style?: React.CSSProperties;
-  children?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLElement>;
 }
 
-const IButton: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (props, ref) => {
+const Button = React.forwardRef<HTMLButtonElement, React.PropsWithChildren<ButtonProps>>((props, ref) => {
   const { type, size, state, className, children, ...others } = props;
 
   const globalSize = React.useContext(SizeContext);
@@ -85,9 +84,8 @@ const IButton: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = 
   );
 
   return result;
-};
+});
 
-const Button = React.forwardRef(IButton);
 Button.displayName = 'Button';
 Button.defaultProps = {
   type: 'default',
