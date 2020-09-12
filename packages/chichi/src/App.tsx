@@ -7,9 +7,14 @@ export default function (): React.ReactElement {
 
   return (
     <Card>
-      <Card.Header title="chichi" />
+      <Card.Header>
+        <Title size="1">chichi</Title>
+      </Card.Header>
+      <Card.Image>
+        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="test" />
+      </Card.Image>
       <Card.Content>
-        <Title size="h1" text="APP" />
+        <Title size="3">app</Title>
         <Button type="primary" onClick={() => setCount(count + 1)}>
           Clicked({count})
         </Button>
