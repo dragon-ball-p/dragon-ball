@@ -4,7 +4,6 @@ import classNames from 'classnames';
 export type TitleSize = '1' | '2' | '3' | '4' | '5' | '6';
 
 export interface TitleProps {
-  text: string;
   size?: TitleSize;
   prefix?: string;
 }
@@ -14,7 +13,7 @@ export interface TitleInterface extends React.FC<TitleProps> {
 }
 
 const Title: TitleInterface = (props) => {
-  const { text, size, prefix, ...rest } = props;
+  const { children, size, prefix, ...rest } = props;
 
   const classes = classNames(prefix, `is-${size}`);
 
@@ -23,35 +22,35 @@ const Title: TitleInterface = (props) => {
     case '1':
       tag = (
         <h1 className={classes} {...rest}>
-          {text}
+          {children}
         </h1>
       );
       break;
     case '2':
       tag = (
         <h2 className={classes} {...rest}>
-          {text}
+          {children}
         </h2>
       );
       break;
     case '4':
       tag = (
         <h4 className={classes} {...rest}>
-          {text}
+          {children}
         </h4>
       );
       break;
     case '5':
       tag = (
         <h5 className={classes} {...rest}>
-          {text}
+          {children}
         </h5>
       );
       break;
     case '6':
       tag = (
         <h6 className={classes} {...rest}>
-          {text}
+          {children}
         </h6>
       );
       break;
@@ -59,7 +58,7 @@ const Title: TitleInterface = (props) => {
     default:
       tag = (
         <h3 className={classes} {...rest}>
-          {text}
+          {children}
         </h3>
       );
       break;
