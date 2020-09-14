@@ -47,5 +47,6 @@
     "classnames": "^2.2.6",
     "omit.js": "^1.0.2",
     "utility-types": "^3.10.0"
-  }
+  },
+  "gitHead": "437291ab928e4a01a7609761bc59a58ba19f19dc"
 }

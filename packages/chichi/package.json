@@ -51,5 +51,6 @@
   },
   "dependencies": {
     "@dragon-ball/goku": "^0.0.4-alpha.0"
-  }
+  },
+  "gitHead": "437291ab928e4a01a7609761bc59a58ba19f19dc"
 }
