@@ -6,7 +6,7 @@ import Button from './Button';
 import Card from './Card';
 import Notification from './Notification';
 import Input from './Input';
-// import Form from './Form';
+import Form from './Form';
 export default function (): React.ReactElement {
   return (
     <div className="app">
@@ -16,7 +16,7 @@ export default function (): React.ReactElement {
         <Route path="/card" element={<Card />}></Route>
         <Route path="/notification" element={<Notification />}></Route>
         <Route path="/input" element={<Input />}></Route>
-        {/* <Route path="/form" element={<Form />}></Route> */}
+        <Route path="/form" element={<Form />}></Route>
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </div>
