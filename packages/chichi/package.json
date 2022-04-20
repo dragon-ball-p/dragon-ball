@@ -31,12 +31,6 @@
   "bugs": {
     "url": "https://github.com/dragon-ball-p/dragon-ball/issues"
   },
-  "peerDependencies": {
-    "bulma": "^0.9.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0"
-  },
   "devDependencies": {
     "@types/react": "^16.9.41",
     "@types/react-dom": "^16.9.8",
@@ -50,7 +44,11 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@dragon-ball/goku": "^0.0.4-alpha.0"
+    "@dragon-ball/goku": "^0.0.4-alpha.0",
+    "bulma": "^0.9.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^6.0.0"
   },
   "gitHead": "437291ab928e4a01a7609761bc59a58ba19f19dc"
 }

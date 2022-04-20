@@ -1,35 +1,35 @@
 // import React, { Component } from 'react';
 import * as React from 'react';
-import { Button, Title, Card, Input, notifcation } from '@dragon-ball/goku';
-
+import { Routes, Route, Link } from 'react-router-dom';
+import Nav from './Nav';
+import Button from './Button';
+import Card from './Card';
+import Notification from './Notification';
+import Input from './Input';
+// import Form from './Form';
 export default function (): React.ReactElement {
-  const [count, setCount] = React.useState(0);
-  const handleClick = React.useCallback(() => {
-    notifcation.open({
-      content: 'test',
-    });
-  }, []);
-
   return (
-    <Card>
-      <Card.Header>
-        <Title size="1">chichi</Title>
-      </Card.Header>
-      <Card.Image>
-        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="test" />
-      </Card.Image>
-      <Card.Content>
-        <Title size="3">app</Title>
-        <Button type="primary" onClick={() => setCount(count + 1)}>
-          Clicked({count})
-        </Button>
-        <div className="control is-loading">
-          <Input value={`${count}`}></Input>
-        </div>
-      </Card.Content>
-      <Card.Footer items={['left', 'center', 'right']}>
-        <Button onClick={handleClick}>notify</Button>
-      </Card.Footer>
-    </Card>
+    <div className="app">
+      <Nav />
+      <Routes>
+        <Route path="/button" element={<Button />}></Route>
+        <Route path="/card" element={<Card />}></Route>
+        <Route path="/notification" element={<Notification />}></Route>
+        <Route path="/input" element={<Input />}></Route>
+        {/* <Route path="/form" element={<Form />}></Route> */}
+        <Route path="*" element={<NoMatch />} />
+      </Routes>
+    </div>
+  );
+}
+
+function NoMatch(): React.ReactElement {
+  return (
+    <div>
+      <h2>404!</h2>
+      <p>
+        <Link to="/">Go to the home page</Link>
+      </p>
+    </div>
   );
 }
