@@ -10,4 +10,7 @@ module.exports = merger.merge(base, {
     main: ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/only-dev-server', './src/index.tsx'],
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
+  devServer: {
+    historyApiFallback: true,
+  },
 });
