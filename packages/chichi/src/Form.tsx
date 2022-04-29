@@ -1,21 +1,29 @@
 import React from 'react';
-import { Form } from '@dragon-ball/goku';
+import { Form, FormItem, Input } from '@dragon-ball/goku';
 
 const Page: React.FC = function () {
+  // const ref = React.useRef<FormInstance>();
   function onSubmit(e) {
     console.log('eeee ', e);
   }
   return (
-    <div className="control is-loading">
-      <Form onSubmit={onSubmit}>
-        <Form.Item label="label1" labelWidth={10}>
-          <span>label1</span>
-        </Form.Item>
-        <Form.Item label="label2" labelWidth={10}>
-          <span>label1</span>
-        </Form.Item>
-      </Form>
-    </div>
+    <Form onSubmit={onSubmit} form={{ name1: '1' }}>
+      <FormItem label="label0" labelWidth={10}>
+        <div className="control">label0</div>
+      </FormItem>
+      <FormItem name="name1" label="label1">
+        <Input defaultValue="name1"></Input>
+      </FormItem>
+      <FormItem name="name2" label="label2" required>
+        <input defaultValue="name2"></input>
+      </FormItem>
+      <FormItem name="name3" label="label3" required>
+        <input type="checkbox" defaultChecked={true}></input>
+      </FormItem>
+      {/* <FormItem name="name3" label="label3" required>
+        <input type="radio" defaultValue={true}></input>
+      </FormItem> */}
+    </Form>
   );
 };
 

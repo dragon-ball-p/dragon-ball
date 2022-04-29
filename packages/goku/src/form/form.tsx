@@ -1,17 +1,66 @@
-import React, { PropsWithChildren, FormEventHandler, FormHTMLAttributes } from 'react';
-import { FormItemProps, FormItem } from './form-item';
+import React, { useState, FormEventHandler, FormHTMLAttributes } from 'react';
+// import { FormItem } from './form-item';
+import { FormInstanceContext } from './context';
+import { FormStore } from './store';
+import { Value, Values, FormInstance } from './types';
 
 interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
-  onSubmit: FormEventHandler;
+  onReset?: FormEventHandler;
+  onSubmit?: FormEventHandler;
+  form: Values;
 }
 
-export interface IForm extends React.FC<PropsWithChildren<FormProps>> {
-  Item: React.FC<PropsWithChildren<FormItemProps>>;
+// export interface IForm extends React.ForwardRefRenderFunction {
+//   Item: typeof FormItem;
+// }
+
+export function useForm(defaultValues: Values): FormInstance {
+  const [store] = useState(new FormStore(defaultValues));
+  (window as any).p = store;
+
+  const instance: FormInstance = React.useMemo(() => {
+    return {
+      getItem: (name) => {
+        return store.get(name) as Value;
+      },
+      setItem: (name, value) => {
+        if (store.validate(name, value)) {
+          store.set(name, value);
+          // re-render FormItem
+        } else {
+          // todo - re-render errors, but not re-render values
+        }
+      },
+      addRule: (name, rule) => {
+        store.addRule(name, rule);
+      },
+      removeRule: (name, rule) => {
+        store.removeRule(name, rule);
+      },
+    };
+  }, [store]);
+
+  return instance;
 }
 
-const Form: IForm = function (props) {
-  return <form onSubmit={props.onSubmit}>{props.children}</form>;
+const InternalForm = function (props: React.PropsWithoutRef<FormProps>, ref: React.RefObject<FormInstance>) {
+  const instance = useForm({ ...props.form });
+
+  React.useImperativeHandle(ref, () => instance);
+
+  return (
+    <FormInstanceContext.Provider value={instance}>
+      <form onSubmit={props.onSubmit}>{props.children}</form>
+    </FormInstanceContext.Provider>
+  );
 };
-Form.Item = FormItem;
+
+// interface IForm extends React.ForwardRefExoticComponent<FormProps & React.RefAttributes<FormInstance>> {
+//   // Item: typeof FormItem;
+// }
+type IForm = React.ForwardRefExoticComponent<FormProps & React.RefAttributes<FormInstance>>;
+
+const Form: IForm = React.forwardRef(InternalForm);
+// (Form as IForm).Item = FormItem;
 
 export { Form };
