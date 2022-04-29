@@ -67,10 +67,7 @@ export class FormStore {
     let res = true;
     if (name) {
       const val = value !== undefined ? value : this.values[name];
-      const rules = this.rules[name];
-      if (!rules) {
-        return res;
-      }
+      const rules = this.rules[name] || [];
       for (const rule of rules) {
         err = rule(val);
         if (err) {

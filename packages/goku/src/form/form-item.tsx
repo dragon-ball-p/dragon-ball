@@ -4,7 +4,7 @@ import { FormInstanceContext } from './context';
 import { Rule } from './types';
 
 export interface FormItemProps {
-  label: string;
+  label?: string;
   labelWidth?: number;
   required?: boolean;
   name?: string;
@@ -54,24 +54,21 @@ function FormItem(props: FormItemProps): React.ReactElement {
     const childrenProps = {
       ...restProps,
       onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-        switch (children.type) {
-          case 'input':
-            console.log('input change', e.target.value);
+        console.debug('FormItem change', e.target.tagName, e.target.type);
+        switch (e.target.type) {
+          case 'text':
+          case 'radio':
+            ctx.setItem(name as string, e.target.value);
             break;
-          case 'select':
-            console.log('select change');
+          case 'checkbox':
+            ctx.setItem(name as string, e.target.checked);
             break;
           default:
-            console.log('others change', children.type);
+            console.log('FormItem change default', children.type, e.target);
+            break;
         }
-        console.log('input change1111', children.type);
-        console.log('input change2222', children);
-        console.log('input change3333', e.target.value);
-        console.log('input change4444', e.target);
-        console.log('input change5555', e);
         // onBlur();
         // todo - debounce;
-        ctx.setItem(name as string, e.target.value);
         children.props.onChange?.apply(children, e);
       },
     };

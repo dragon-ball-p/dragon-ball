@@ -44,13 +44,21 @@ export function useForm(defaultValues: Values): FormInstance {
 }
 
 const InternalForm = function (props: React.PropsWithoutRef<FormProps>, ref: React.RefObject<FormInstance>) {
+  // const InternalForm: React.ForwardRefRenderFunction<FormInstance, FormProps> = function (props, ref) {
   const instance = useForm({ ...props.form });
 
   React.useImperativeHandle(ref, () => instance);
 
+  function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    console.log('From::onSubmit::', e);
+
+    props.onSubmit && props.onSubmit(e);
+  }
+
   return (
     <FormInstanceContext.Provider value={instance}>
-      <form onSubmit={props.onSubmit}>{props.children}</form>
+      <form onSubmit={onSubmit}>{props.children}</form>
     </FormInstanceContext.Provider>
   );
 };
@@ -58,9 +66,10 @@ const InternalForm = function (props: React.PropsWithoutRef<FormProps>, ref: Rea
 // interface IForm extends React.ForwardRefExoticComponent<FormProps & React.RefAttributes<FormInstance>> {
 //   // Item: typeof FormItem;
 // }
-type IForm = React.ForwardRefExoticComponent<FormProps & React.RefAttributes<FormInstance>>;
+// type IForm = React.ForwardRefExoticComponent<FormProps & React.RefAttributes<FormInstance>>;
 
-const Form: IForm = React.forwardRef(InternalForm);
+const Form = React.forwardRef(InternalForm);
+// const Form: IForm = React.forwardRef(InternalForm);
 // (Form as IForm).Item = FormItem;
 
 export { Form };
