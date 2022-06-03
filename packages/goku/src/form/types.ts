@@ -13,6 +13,8 @@ export type ValidationErrors = Record<string, ValidationError | null>;
 export interface FormInstance {
   getItem(name: string): Value;
   setItem(name: string, value: Value): void;
+  getItems(): Values;
+  isValidated(): boolean;
   addRule(name: string, rule: Rule): void;
   removeRule(name: string, rule: Rule): void;
 }

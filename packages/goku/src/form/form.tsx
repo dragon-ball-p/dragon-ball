@@ -31,6 +31,22 @@ export function useForm(defaultValues: Values): FormInstance {
           // todo - re-render errors, but not re-render values
         }
       },
+      getItems: () => {
+        const res = {};
+        for (const name in store.values) {
+          res[name] = store.values[name];
+        }
+        return res;
+      },
+      isValidated: () => {
+        let res = true;
+        for (const name in store.errors) {
+          if (store.errors[name]) {
+            res = false;
+          }
+        }
+        return res;
+      },
       addRule: (name, rule) => {
         store.addRule(name, rule);
       },
@@ -43,11 +59,12 @@ export function useForm(defaultValues: Values): FormInstance {
   return instance;
 }
 
-const InternalForm = function (props: React.PropsWithoutRef<FormProps>, ref: React.RefObject<FormInstance>) {
-  // const InternalForm: React.ForwardRefRenderFunction<FormInstance, FormProps> = function (props, ref) {
+// const InternalForm = function (props: React.PropsWithoutRef<FormProps>, ref: React.MutableRefObject<FormInstance>) {
+const InternalForm: React.ForwardRefRenderFunction<FormInstance, FormProps> = function (props, ref) {
   const instance = useForm({ ...props.form });
 
   React.useImperativeHandle(ref, () => instance);
+  // ref.current = instance;
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();

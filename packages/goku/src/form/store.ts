@@ -3,16 +3,10 @@ import { Rule, Rules, Value, Values, ValidationError, ValidationErrors } from '.
 
 export const isRequired: Rule = function (val: Value): ValidationError | undefined {
   console.log('isRequired', val);
-  if (typeof val === 'undefined') {
+  if (typeof val === 'undefined' || val === null || val === '') {
     return {
       type: 'required',
-      message: 'Value is Required but undefined',
-    } as ValidationError;
-  }
-  if (val === null) {
-    return {
-      type: 'required',
-      message: 'Value is Required, but null',
+      message: 'Value is Required, but blank',
     } as ValidationError;
   }
   return;

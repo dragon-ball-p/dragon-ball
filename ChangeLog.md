@@ -1,10 +1,11 @@
-# [](https://github.com/dragon-ball-p/dragon-ball/compare/v0.0.4-alpha.0...v) (2022-04-29)
+# [](https://github.com/dragon-ball-p/dragon-ball/compare/v0.0.4-alpha.0...v) (2022-06-03)
 
 
 ### Features
 
 * form ([7c7a921](https://github.com/dragon-ball-p/dragon-ball/commit/7c7a9218d6fe8bf9a75bfee95fbfca3853f02504))
 * form WIP ([46d5cc4](https://github.com/dragon-ball-p/dragon-ball/commit/46d5cc488f3d88e1c74be62c6a9c36d07e3161c3))
+* wIP form, 支持 input checkbox, radio ([0be8ea2](https://github.com/dragon-ball-p/dragon-ball/commit/0be8ea2dff84c6c81e7104c962c330c292b50275))
 
 
 

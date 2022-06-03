@@ -16,7 +16,7 @@ const Page: React.FC = function () {
           <div className="control">label0</div>
         </FormItem>
         <FormItem name="name1" label="label1">
-          <Input />
+          <Input defaultValue="sss" />
         </FormItem>
         <FormItem name="name2" label="label2" required>
           <input />
