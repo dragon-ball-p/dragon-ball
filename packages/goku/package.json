@@ -34,6 +34,8 @@
     "url": "https://github.com/dragon-ball-p/dragon-ball/issues"
   },
   "devDependencies": {
+    "node-sass": "^7.0.1",
+    "sass-loader": "^13.0.0"
   },
   "peerDependencies": {
     "bulma": "^0.9.0",

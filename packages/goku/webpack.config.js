@@ -40,6 +40,13 @@ module.exports = {
           loader: 'ts-loader',
         },
       },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'sass-loader',
+        },
+      },
     ],
   },
   plugins: [
