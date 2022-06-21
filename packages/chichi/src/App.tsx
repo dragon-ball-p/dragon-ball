@@ -22,7 +22,6 @@ export default function (): React.ReactElement {
     </div>
   );
 }
-
 function NoMatch(): React.ReactElement {
   return (
     <div>
