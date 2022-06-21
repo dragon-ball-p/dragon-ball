@@ -1,4 +1,9 @@
-# [](https://github.com/dragon-ball-p/dragon-ball/compare/v0.0.4-alpha.0...v) (2022-06-03)
+# [](https://github.com/dragon-ball-p/dragon-ball/compare/v0.0.4-alpha.0...v) (2022-06-21)
+
+
+### Bug Fixes
+
+* fix Notification ([f639f6b](https://github.com/dragon-ball-p/dragon-ball/commit/f639f6bee86b54069d8df36761cb308906a3cad7))
 
 
 ### Features
