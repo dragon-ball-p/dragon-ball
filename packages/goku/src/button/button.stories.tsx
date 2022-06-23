@@ -21,21 +21,15 @@ export const Primary = Template.bind({});
 Primary.args = {
   type: 'primary',
   children: 'Primary',
+  onClick: () => {
+    console.log('clicked button');
+  },
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  children: 'Default',
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  children: 'Large Button',
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  children: 'Small Button',
+export const Link = Template.bind({});
+Link.args = {
+  type: 'link',
+  children: '链接',
+  href: 'https://www.baidu.com',
+  target: '_blank',
 };
