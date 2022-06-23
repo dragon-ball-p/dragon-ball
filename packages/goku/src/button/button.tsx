@@ -6,7 +6,7 @@ import SizeContext, { SizeType } from '../config-provider';
 
 const ButtonBaseCls = 'button';
 
-type ButtonTypes = 'default' | 'primary' | 'link';
+type ButtonTypes = 'default' | 'primary' | 'link' | 'info' | 'success' | 'warning' | 'danger';
 type ButtonStates = 'hover' | 'focus' | 'active' | 'loading';
 // todo state - static
 // todo styles - outlined, inverted, rounded
@@ -17,19 +17,24 @@ export interface ButtonProps {
   size?: SizeType;
   state?: ButtonStates;
 
-  className?: string;
-  style?: React.CSSProperties;
-  onClick?: React.MouseEventHandler<HTMLElement>;
+  disabled?: boolean;
+  href?: string;
+
+  // className?: string;
+  // onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, React.PropsWithChildren<ButtonProps>>((props, ref) => {
-  const { type, size, state, className, children, ...others } = props;
+export const Button = React.forwardRef<
+  HTMLButtonElement,
+  React.PropsWithChildren<ButtonProps & React.HTMLAttributes<HTMLButtonElement | HTMLAnchorElement>>
+>((props, ref) => {
+  const { type, size, state, disabled, href, className, children, ...others } = props;
 
   const globalSize = React.useContext(SizeContext);
 
   const buttonRef = ref || React.createRef<HTMLButtonElement>();
 
-  const typeCls = `is-${type}`;
+  const typeCls = 'default' === type ? '' : `is-${type}`;
 
   let sizeCls = '';
   switch (size || globalSize) {
@@ -56,7 +61,7 @@ const Button = React.forwardRef<HTMLButtonElement, React.PropsWithChildren<Butto
       stateCls = 'is-focused';
       break;
     case 'active':
-      stateCls = 'is-actived';
+      stateCls = 'is-active';
       break;
     case 'loading':
       stateCls = 'is-loading';
@@ -65,11 +70,20 @@ const Button = React.forwardRef<HTMLButtonElement, React.PropsWithChildren<Butto
     default:
       break;
   }
-  const cls = classNames(ButtonBaseCls, className, typeCls, sizeCls, stateCls);
+  const cls = classNames(
+    ButtonBaseCls,
+    {
+      disabled: type === 'link' && disabled,
+    },
+    typeCls,
+    sizeCls,
+    type === 'link' ? '' : stateCls,
+    className,
+  );
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>) => {
     const { onClick } = props;
-    if (isLoading) {
+    if (isLoading || disabled) {
       return;
     }
     if (onClick) {
@@ -77,18 +91,21 @@ const Button = React.forwardRef<HTMLButtonElement, React.PropsWithChildren<Butto
     }
   };
 
-  const result = (
-    <button className={cls} onClick={handleClick} ref={buttonRef} {...others}>
+  return type === 'link' ? (
+    <a className={cls} href={href} ref={(buttonRef as unknown) as React.RefObject<HTMLAnchorElement>} {...others}>
+      {children}
+    </a>
+  ) : (
+    <button className={cls} onClick={handleClick} disabled={disabled} ref={buttonRef} {...others}>
       {children}
     </button>
   );
-
-  return result;
 });
 
 Button.displayName = 'Button';
 Button.defaultProps = {
   type: 'default',
+  disabled: false,
 };
 
 export default Button;
