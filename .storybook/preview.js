@@ -1,4 +1,4 @@
-import 'bulma/css/bulma.css';
+import '../packages/goku/src/styles/index.scss';
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
