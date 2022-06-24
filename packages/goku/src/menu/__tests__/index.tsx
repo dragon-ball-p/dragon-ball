@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RenderResult, render } from '@testing-library/react';
+import { RenderResult, render, fireEvent } from '@testing-library/react';
 import { Menu } from '../menu';
 import { MenuItem } from '../menuItem';
 
@@ -16,7 +16,12 @@ describe('Menu 按钮测试', () => {
   });
   it('应该显示一个菜单', () => {
     expect(wrapper.getByTestId('menu-test-id')).toBeInTheDocument();
-    expect(wrapper.getByText('内容')).toHaveClass('is-active');
-    expect(wrapper.getByText('主页')).not.toHaveClass('is-active');
+    const zeroElem = wrapper.getByText('主页');
+    const firstElem = wrapper.getByText('内容');
+    expect(firstElem).toHaveClass('is-active');
+    expect(zeroElem).not.toHaveClass('is-active');
+    fireEvent.click(zeroElem);
+    expect(zeroElem).toHaveClass('is-active');
+    expect(firstElem).not.toHaveClass('is-active');
   });
 });
