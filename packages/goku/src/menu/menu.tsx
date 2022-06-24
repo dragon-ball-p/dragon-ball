@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import { IMenuItemProps } from './menuItem';
 
 const { useState } = React;
 
@@ -34,10 +35,22 @@ export const Menu: React.FC<React.PropsWithChildren<IMenuProps>> = (props) => {
     'menu-vertical': mode === 'vertical',
     'menu-horizontal': mode !== 'vertical',
   });
+
+  const renderChildren = (children: React.ReactNode) => {
+    return React.Children.map(children, (child, idx) => {
+      const childElement = child as React.FunctionComponentElement<IMenuItemProps>;
+      if (childElement.type.displayName === 'MenuItem') {
+        return React.cloneElement(childElement, { index: `${idx}` });
+      } else {
+        console.error('请在 Menu 组件中包裹 MenuItem 组件');
+      }
+      return '';
+    });
+  };
   return (
     <MenuContext.Provider value={{ index: currentIndex, mode, onSelect: _onSelect }}>
       <ul className={classnames} {...others} data-testid="menu-test-id">
-        {children}
+        {renderChildren(children)}
       </ul>
     </MenuContext.Provider>
   );

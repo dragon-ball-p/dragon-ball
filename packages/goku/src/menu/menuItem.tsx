@@ -2,13 +2,13 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { MenuContext } from './menu';
 
-interface IMenuItem {
-  index: string;
+export interface IMenuItemProps {
+  index?: string;
   disabled?: boolean;
   className?: string;
 }
 
-export const MenuItem: React.FC<React.PropsWithChildren<IMenuItem>> = (props) => {
+export const MenuItem: React.FC<React.PropsWithChildren<IMenuItemProps>> = (props) => {
   const { index, disabled, className, children, ...others } = props;
   const ctx = React.useContext(MenuContext);
 
@@ -17,20 +17,15 @@ export const MenuItem: React.FC<React.PropsWithChildren<IMenuItem>> = (props) =>
     'is-disabled': disabled,
   });
 
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (ctx.onSelect && !disabled && typeof index === 'string') {
+      ctx.onSelect(index);
+    }
+  };
+
   return (
-    <li
-      className={classnames}
-      {...others}
-      onClick={(e: React.MouseEvent) => {
-        e.preventDefault();
-        if (disabled) {
-          return;
-        }
-        if (ctx.onSelect) {
-          ctx.onSelect(index);
-        }
-      }}
-    >
+    <li className={classnames} {...others} onClick={handleClick}>
       {children}
     </li>
   );

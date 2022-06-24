@@ -7,10 +7,10 @@ describe('Menu 按钮测试', () => {
   let wrapper: RenderResult;
   beforeEach(() => {
     wrapper = render(
-      <Menu defaultIndex="1">
-        <MenuItem index="0"> 主页 </MenuItem>
-        <MenuItem index="1"> 内容 </MenuItem>
-        <MenuItem index="0"> 关于 </MenuItem>
+      <Menu>
+        <MenuItem> 主页 </MenuItem>
+        <MenuItem> 内容 </MenuItem>
+        <MenuItem> 关于 </MenuItem>
       </Menu>,
     );
   });
@@ -18,10 +18,10 @@ describe('Menu 按钮测试', () => {
     expect(wrapper.getByTestId('menu-test-id')).toBeInTheDocument();
     const zeroElem = wrapper.getByText('主页');
     const firstElem = wrapper.getByText('内容');
-    expect(firstElem).toHaveClass('is-active');
-    expect(zeroElem).not.toHaveClass('is-active');
-    fireEvent.click(zeroElem);
     expect(zeroElem).toHaveClass('is-active');
     expect(firstElem).not.toHaveClass('is-active');
+    fireEvent.click(firstElem);
+    expect(firstElem).toHaveClass('is-active');
+    expect(zeroElem).not.toHaveClass('is-active');
   });
 });

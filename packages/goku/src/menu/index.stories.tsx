@@ -7,9 +7,16 @@ import { MenuItem } from './menuItem';
 export default {
   title: 'Menu 菜单',
   component: Menu,
+  subcomponents: { MenuItem },
 } as ComponentMeta<typeof Menu>;
 
-const Template: ComponentStory<typeof Menu> = (args) => <Menu {...args} />;
+const Template: ComponentStory<typeof Menu> = (args) => {
+  const { children, ...others } = args;
+  const renderFragmentChild = (child: React.ReactElement) => {
+    return child.props.children;
+  };
+  return <Menu {...others}>{React.Children.map(children, renderFragmentChild)}</Menu>;
+};
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
@@ -17,12 +24,10 @@ Primary.args = {
   mode: 'primary',
   children: (
     <>
-      <MenuItem index="0">主页</MenuItem>
-      <MenuItem index="1">内容</MenuItem>
-      <MenuItem index="2" disabled>
-        待补充
-      </MenuItem>
-      <MenuItem index="3">关于</MenuItem>
+      <MenuItem>主页</MenuItem>
+      <MenuItem>内容</MenuItem>
+      <MenuItem disabled>待补充</MenuItem>
+      <MenuItem>关于</MenuItem>
     </>
   ),
   onSelect: (idx: string) => {
