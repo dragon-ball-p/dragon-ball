@@ -1,0 +1,35 @@
+$menu-item-disabled-background-color: $scheme-main !default;
+
+.menu,
+.menu-list {
+  // &.menu-vertical {}
+  &.menu-horizontal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: no-wrap;
+  }
+
+  .menu-item {
+    display: block;
+    padding: $menu-list-link-padding;
+    border-radius: $menu-item-radius;
+    color: $menu-item-color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $menu-item-hover-background-color;
+      color: $menu-item-hover-color;
+    }
+
+    &.is-disabled {
+      cursor: none;
+      pointer-events: none;
+      background-color: $menu-item-disabled-background-color;
+    }
+    // Modifiers
+    &.is-active {
+      background-color: $menu-item-active-background-color;
+      color: $menu-item-active-color;
+    }
+  }
+}
