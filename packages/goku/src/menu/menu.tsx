@@ -39,7 +39,7 @@ export const Menu: React.FC<React.PropsWithChildren<IMenuProps>> = (props) => {
   const renderChildren = (children: React.ReactNode) => {
     return React.Children.map(children, (child, idx) => {
       const childElement = child as React.FunctionComponentElement<IMenuItemProps>;
-      if (childElement.type.displayName === 'MenuItem') {
+      if (childElement.type.displayName === 'MenuItem' || childElement.type.displayName === 'SubMenu') {
         return React.cloneElement(childElement, { index: `${idx}` });
       } else {
         console.error('请在 Menu 组件中包裹 MenuItem 组件');

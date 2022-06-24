@@ -2,12 +2,13 @@ import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Menu } from './menu';
+import { SubMenu } from './subMenu';
 import { MenuItem } from './menuItem';
 
 export default {
   title: 'Menu 菜单',
   component: Menu,
-  subcomponents: { MenuItem },
+  subcomponents: { SubMenu, MenuItem },
 } as ComponentMeta<typeof Menu>;
 
 const Template: ComponentStory<typeof Menu> = (args) => {
@@ -27,6 +28,10 @@ Primary.args = {
       <MenuItem>主页</MenuItem>
       <MenuItem>内容</MenuItem>
       <MenuItem disabled>待补充</MenuItem>
+      <SubMenu title="设置">
+        <MenuItem>个人信息</MenuItem>
+        <MenuItem>账号安全</MenuItem>
+      </SubMenu>
       <MenuItem>关于</MenuItem>
     </>
   ),
