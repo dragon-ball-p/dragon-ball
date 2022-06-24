@@ -14,6 +14,7 @@
 * form WIP ([46d5cc4](https://github.com/dragon-ball-p/dragon-ball/commit/46d5cc488f3d88e1c74be62c6a9c36d07e3161c3))
 * menu 菜单功能完善 ([dbeaf26](https://github.com/dragon-ball-p/dragon-ball/commit/dbeaf26a8fc74d448418367635dd8fbeea251ce5))
 * **menu:** 为 MenuItem 自动添加 index ([19629e4](https://github.com/dragon-ball-p/dragon-ball/commit/19629e496fc5c8c207d4f1ef92af11b708113028))
+* **menu:** wIP: 初步实现 Sub Menu ([07b4d21](https://github.com/dragon-ball-p/dragon-ball/commit/07b4d21a18add2d1929915df9c41b27dd117d52e))
 * wIP form, 支持 input checkbox, radio ([0be8ea2](https://github.com/dragon-ball-p/dragon-ball/commit/0be8ea2dff84c6c81e7104c962c330c292b50275))
 
 
