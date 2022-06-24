@@ -1,4 +1,4 @@
-# [](https://github.com/dragon-ball-p/dragon-ball/compare/v0.0.4-alpha.0...v) (2022-06-23)
+# [](https://github.com/dragon-ball-p/dragon-ball/compare/v0.0.4-alpha.0...v) (2022-06-24)
 
 
 ### Bug Fixes
@@ -8,9 +8,12 @@
 
 ### Features
 
+* 初步实现 Menu ([6865490](https://github.com/dragon-ball-p/dragon-ball/commit/68654907fe082ceb2409dcb805ac1a79e758e43a))
 * 支持 link 按钮 ([b8ce387](https://github.com/dragon-ball-p/dragon-ball/commit/b8ce3875d58cdde59cb503a30ed45940f97d8d11))
 * form ([7c7a921](https://github.com/dragon-ball-p/dragon-ball/commit/7c7a9218d6fe8bf9a75bfee95fbfca3853f02504))
 * form WIP ([46d5cc4](https://github.com/dragon-ball-p/dragon-ball/commit/46d5cc488f3d88e1c74be62c6a9c36d07e3161c3))
+* menu 菜单功能完善 ([dbeaf26](https://github.com/dragon-ball-p/dragon-ball/commit/dbeaf26a8fc74d448418367635dd8fbeea251ce5))
+* **menu:** 为 MenuItem 自动添加 index ([19629e4](https://github.com/dragon-ball-p/dragon-ball/commit/19629e496fc5c8c207d4f1ef92af11b708113028))
 * wIP form, 支持 input checkbox, radio ([0be8ea2](https://github.com/dragon-ball-p/dragon-ball/commit/0be8ea2dff84c6c81e7104c962c330c292b50275))
 
 
