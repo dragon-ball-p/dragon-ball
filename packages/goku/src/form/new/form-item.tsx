@@ -38,6 +38,7 @@ export const FormItem: React.FC<FormItemProps> = (props) => {
   }, [name, rules, store]);
   console.log('rerender FormItem', name);
   const getControls = () => ({
+    // todo - 补充一个默认值
     value: name && store.getItemValue(name),
     onChange(e) {
       console.log('Form Element ', e.target);
@@ -54,20 +55,20 @@ export const FormItem: React.FC<FormItemProps> = (props) => {
 
   const renderErrors = (errors?: Rule[]): React.ReactNode => {
     if (errors && errors.length > 0) {
-      return (
-        <div>
-          {errors.map((err, idx) => (
-            <p key={idx}>{err.message}</p>
-          ))}
-        </div>
-      );
+      return <div>{errors[0].message}</div>;
     }
     return null;
   };
 
+  const width = labelWidth ? labelWidth : 80;
+
   return (
-    <div className="form-item">
-      {childNode} {renderErrors(errors)}
+    <div className="field">
+      <label className="label" style={{ width }}>
+        {label}
+      </label>
+      <div className="control">{childNode}</div>
+      {renderErrors(errors)}
     </div>
   );
 };

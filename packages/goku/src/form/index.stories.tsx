@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // import { Form } from './form';
 import { Form, FormItem, useForm, FormStore } from './new';
+import { Input } from '../input';
 
 console.log('ffff', Form, FormItem);
 export default {
@@ -13,9 +14,6 @@ export default {
 
 export const Empty: ComponentStory<typeof Form> = (args) => <Form {...args} />;
 
-const Input = (props) => {
-  return <input type="text" {...props} />;
-};
 export const OneItem: ComponentStory<typeof Form> = (args) => (
   <Form {...args}>
     <FormItem name="input">
@@ -37,7 +35,9 @@ export const TwoItem: ComponentStory<typeof Form> = (args) => {
   );
 };
 
+const initialValues = { name: '张三', password: '123456' };
 const nameRules = { required: true, message: '请输入姓名！' };
+const passwdRules = { required: true, message: '请输入密码！' };
 class WrappedForm extends React.Component {
   ref = React.createRef<FormStore>();
   onSubmit = (values) => {
@@ -50,11 +50,17 @@ class WrappedForm extends React.Component {
   };
   render() {
     return (
-      <Form ref={this.ref} onSubmit={this.onSubmit} onSubmitFailed={this.onSubmitFailed}>
-        <FormItem name="name" rules={[nameRules]}>
+      <Form ref={this.ref} initialValues={initialValues} onSubmit={this.onSubmit} onSubmitFailed={this.onSubmitFailed}>
+        <FormItem label="姓名" name="name" rules={[nameRules]}>
           <Input />
         </FormItem>
-        <FormItem name="input">
+        <FormItem label="密码" name="password" rules={[passwdRules]}>
+          <Input />
+        </FormItem>
+        <FormItem label="别名" name="alias" rules={[{ min: 2 }, { max: 10 }, { required: true }]}>
+          <Input defaultValue="小三" />
+        </FormItem>
+        <FormItem label="输入框" name="input">
           <Input />
         </FormItem>
         <FormItem>

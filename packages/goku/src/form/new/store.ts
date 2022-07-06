@@ -15,12 +15,22 @@ export class FormStore {
   values: Values = {};
   rules: RuleCache = {};
   errors: ErrorCache = {};
-
   itemCaches: ItemCache[] = [];
+
+  constructor(initialValues?: Values) {
+    this.values = { ...this.values, ...initialValues };
+  }
+
   registerFormItem = (cache: ItemCache): (() => void) => {
     this.itemCaches.push(cache);
     return () => {
       this.itemCaches = this.itemCaches.filter((_cache) => _cache !== cache);
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      delete this.errors[cache.props.name!];
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      delete this.rules[cache.props.name!];
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      delete this.values[cache.props.name!];
     };
   };
 

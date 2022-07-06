@@ -5,14 +5,15 @@ import { Values } from './types';
 
 export interface FormProps {
   form?: FormStore;
+  initialValues?: Values;
   onSubmit?: (values: Values) => void;
   onSubmitFailed?: (errors: ErrorCache, values: Values) => void;
 }
 
 const _Form: React.ForwardRefRenderFunction<FormStore, FormProps> = (props, ref) => {
-  const { form, onSubmit, onSubmitFailed, children } = props;
+  const { form, initialValues, onSubmit, onSubmitFailed, children } = props;
   const { Provider } = FormContext;
-  const store = form || new FormStore();
+  const store = form || new FormStore(initialValues);
 
   React.useImperativeHandle(ref, () => store);
 
@@ -23,9 +24,15 @@ const _Form: React.ForwardRefRenderFunction<FormStore, FormProps> = (props, ref)
       store.validate(key, values[key]);
     });
     console.log('values:: ', values);
-    const errors = store.getErrors();
-    if (Object.keys(errors).length > 0) {
-      onSubmitFailed && onSubmitFailed(errors, values);
+    let hasError = false;
+    const errorsCache = store.getErrors();
+    for (const key of Object.keys(errorsCache)) {
+      if (errorsCache[key].length > 0) {
+        hasError = true;
+      }
+    }
+    if (hasError) {
+      onSubmitFailed && onSubmitFailed(errorsCache, values);
     } else {
       onSubmit && onSubmit(values);
     }
