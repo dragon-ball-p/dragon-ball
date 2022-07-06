@@ -2,10 +2,7 @@ import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // import { Form } from './form';
-import { Form } from './new/form';
-import { FormItem } from './new/form-item';
-// import { Form, FormItem, useForm } from './new/form';
-// import { Form, FormItem, useForm } from './bubucuo';
+import { Form, FormItem, useForm, FormStore } from './new';
 
 console.log('ffff', Form, FormItem);
 export default {
@@ -24,23 +21,43 @@ export const OneItem: ComponentStory<typeof Form> = (args) => (
     <FormItem name="input">
       <Input />
     </FormItem>
-    <button type="submit">Submit</button>
+    <button type="submit">Submit1</button>
   </Form>
 );
 
-// const nameRules = { required: true, message: '请输入姓名！' };
-// export const FF: ComponentStory<typeof Form> = (args) => {
-//   const [form] = useForm();
-//   const onF = (d) => console.log(d);
-//   const onFF = (e) => console.log(e);
-//   return (
-//     <Form {...args} onFinish={onF} onFinishFailed={onFF} form={form}>
-//       <FormItem name="input" rules={[nameRules]}>
-//         <Input />
-//       </FormItem>
-//       <FormItem>
-//         <button type="submit">Submit</button>
-//       </FormItem>
-//     </Form>
-//   );
-// };
+export const TwoItem: ComponentStory<typeof Form> = (args) => {
+  const [form] = useForm();
+  return (
+    <Form form={form} {...args}>
+      <FormItem name="input">
+        <Input />
+      </FormItem>
+      <button type="submit">Submit2</button>
+    </Form>
+  );
+};
+
+const nameRules = { required: true, message: '请输入姓名！' };
+class WrappedForm extends React.Component {
+  ref = React.createRef<FormStore>();
+  onSubmit = (values) => {
+    console.log('this.ref', this.ref);
+    console.log('on Submittttt ', values);
+  };
+  render() {
+    return (
+      <Form ref={this.ref} onSubmit={this.onSubmit}>
+        {/* <FormItem name="input" rules={[nameRules]}> */}
+        <FormItem name="input">
+          <Input />
+        </FormItem>
+        <FormItem>
+          <button type="submit">Submit3</button>
+        </FormItem>
+      </Form>
+    );
+  }
+}
+export const FF: ComponentStory<typeof Form> = (args) => {
+  return <WrappedForm {...args}></WrappedForm>;
+};

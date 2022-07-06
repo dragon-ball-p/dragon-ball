@@ -9,11 +9,13 @@ export interface FormProps {
   onSubmitFailed?: (err: Error) => void;
 }
 
-export const Form: React.FC<FormProps> = (props) => {
+const _Form: React.ForwardRefRenderFunction<FormStore, FormProps> = (props, ref) => {
   const { form, onSubmit, children } = props;
   const { Provider } = FormContext;
-
   const store = form || new FormStore();
+
+  React.useImperativeHandle(ref, () => store);
+
   const _onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     // todo validate
@@ -30,3 +32,8 @@ export const Form: React.FC<FormProps> = (props) => {
     </Provider>
   );
 };
+_Form.displayName = 'Form';
+
+const Form = React.forwardRef(_Form);
+
+export { Form };
