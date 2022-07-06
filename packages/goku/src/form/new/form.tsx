@@ -1,16 +1,16 @@
 import React from 'react';
-import { FormStore } from './store';
+import { ErrorCache, FormStore } from './store';
 import { FormContext } from './context';
 import { Values } from './types';
 
 export interface FormProps {
   form?: FormStore;
   onSubmit?: (values: Values) => void;
-  onSubmitFailed?: (err: Error) => void;
+  onSubmitFailed?: (errors: ErrorCache, values: Values) => void;
 }
 
 const _Form: React.ForwardRefRenderFunction<FormStore, FormProps> = (props, ref) => {
-  const { form, onSubmit, children } = props;
+  const { form, onSubmit, onSubmitFailed, children } = props;
   const { Provider } = FormContext;
   const store = form || new FormStore();
 
@@ -18,10 +18,17 @@ const _Form: React.ForwardRefRenderFunction<FormStore, FormProps> = (props, ref)
 
   const _onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    // todo validate
     const values = store.getItemValues();
+    Object.keys(values).forEach((key) => {
+      store.validate(key, values[key]);
+    });
     console.log('values:: ', values);
-    onSubmit && onSubmit(values);
+    const errors = store.getErrors();
+    if (Object.keys(errors).length > 0) {
+      onSubmitFailed && onSubmitFailed(errors, values);
+    } else {
+      onSubmit && onSubmit(values);
+    }
   };
 
   return (

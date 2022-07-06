@@ -44,10 +44,16 @@ class WrappedForm extends React.Component {
     console.log('this.ref', this.ref);
     console.log('on Submittttt ', values);
   };
+  onSubmitFailed = (errors, values) => {
+    console.log('this.ref', this.ref);
+    console.log('on SubmitttttFailed ', errors, values);
+  };
   render() {
     return (
-      <Form ref={this.ref} onSubmit={this.onSubmit}>
-        {/* <FormItem name="input" rules={[nameRules]}> */}
+      <Form ref={this.ref} onSubmit={this.onSubmit} onSubmitFailed={this.onSubmitFailed}>
+        <FormItem name="name" rules={[nameRules]}>
+          <Input />
+        </FormItem>
         <FormItem name="input">
           <Input />
         </FormItem>
