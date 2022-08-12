@@ -1,4 +1,4 @@
-import React, { createContext, useState, useReducer, useEffect } from 'react';
+import { createContext, useState, useReducer, useEffect } from 'react';
 import { SizeType } from '../config/size-type';
 import { OptionProps } from './option';
 
@@ -13,7 +13,9 @@ interface SelectContextValue {
 export const SelectContext = createContext<SelectContextValue>({
   size: 'normal',
   selected: [],
-  onSelect: () => {},
+  onSelect: function () {
+    // do sth.
+  },
 });
 
 interface SelectContextProps {
@@ -31,10 +33,17 @@ interface SelectAction {
 }
 // todo SelectAction['type'] 为 clear 时，payload 为 undefined
 
-export const useSelectContext = (
-  props: SelectContextProps,
-): SelectContextValue => {
-  const { size = 'normal', mode = 'single', value, defaultValue, options = [], onChange = () => {} } = props;
+export const useSelectContext = (props: SelectContextProps): SelectContextValue => {
+  const {
+    size = 'normal',
+    mode = 'single',
+    value,
+    defaultValue,
+    options = [],
+    onChange = function () {
+      // do sth.
+    },
+  } = props;
   const [isSingle] = useState(() => mode !== 'multi');
 
   const [selected, dispatch] = useReducer(
@@ -44,6 +53,7 @@ export const useSelectContext = (
           state = ([] as OptionProps[]).concat(action.payload as OptionProps | OptionProps[]);
           break;
         case 'add':
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           state = state.concat(action.payload!);
           break;
         case 'remove':
@@ -65,9 +75,7 @@ export const useSelectContext = (
       if (isSingle) {
         return options.filter((option) => option.value === values);
       } else {
-        return options.filter((option) =>
-          Array.isArray(values) && values.includes(option.value)
-        );
+        return options.filter((option) => Array.isArray(values) && values.includes(option.value));
       }
     },
   );
@@ -96,13 +104,13 @@ export const useSelectContext = (
       }
     });
     dispatch({ type: 'replace', payload });
-  }, [value]);
+  }, [isSingle, value, options]);
 
   useEffect(() => {
     // todo - 初次 render 时，也会触发一次 onChange，咋办
     const values = selected.map((item) => item.value);
     isSingle ? onChange(values[0]) : onChange(values);
-  }, [selected]);
+  }, [isSingle, selected, onChange]);
 
   return {
     size,

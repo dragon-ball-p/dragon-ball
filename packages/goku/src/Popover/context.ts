@@ -13,16 +13,20 @@ export interface IPopoverContext {
 
 export const PopoverContext = createContext<IPopoverContext>({
   placement: 'bottom',
-  autoPlacement: () => {},
+  autoPlacement: function () {
+    // do sth.
+  },
   visible: false,
   trigger: 'hover',
-  triggerVisible: () => {},
+  triggerVisible: function () {
+    // do sth.
+  },
 });
 
 interface PopoverContextInitialProps {
-  placement: Placement,
-  visible: boolean,
-  trigger: Trigger,
+  placement: Placement;
+  visible: boolean;
+  trigger: Trigger;
   onVisibleChange: (visible: boolean) => void;
 }
 
@@ -31,7 +35,9 @@ export function usePopoverContext(initialProps: PopoverContextInitialProps): IPo
     placement: initialPlacement = 'bottom',
     visible: initialVisible = false,
     trigger: initialTrigger = 'hover',
-    onVisibleChange = () => {},
+    onVisibleChange = function () {
+      // do sth.
+    },
   } = initialProps;
   const [placement, setPlacement] = useState(initialPlacement);
   const [trigger, setTrigger] = useState(initialTrigger);
@@ -48,9 +54,12 @@ export function usePopoverContext(initialProps: PopoverContextInitialProps): IPo
   const autoPlacement = useCallback((newPlacement: Placement) => {
     setPlacement(newPlacement);
   }, []);
-  const triggerVisible = useCallback((value: boolean) => {
-    setVisible(value);
-    onVisibleChange(value);
-  }, []);
+  const triggerVisible = useCallback(
+    (value: boolean) => {
+      setVisible(value);
+      onVisibleChange(value);
+    },
+    [onVisibleChange],
+  );
   return { placement, autoPlacement, visible, trigger, triggerVisible };
 }

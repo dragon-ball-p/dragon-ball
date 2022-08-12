@@ -21,46 +21,46 @@ export type Placement =
   | 'rightBottom';
 
 export function getPlacementClass(placement?: Placement): string {
- let clz = 'is-bottom-left';
- switch (placement) {
-   case 'top':
+  let clz = 'is-bottom-left';
+  switch (placement) {
+    case 'top':
       clz = `is-top`;
       break;
-   case 'topLeft':
+    case 'topLeft':
       clz = `is-top-left`;
       break;
-   case 'topRight':
+    case 'topRight':
       clz = `is-top-right`;
       break;
-   case 'bottom':
+    case 'bottom':
       clz = `is-bottom`;
       break;
-   case 'bottomLeft':
+    case 'bottomLeft':
       clz = `is-bottom-left`;
       break;
-   case 'bottomRight':
+    case 'bottomRight':
       clz = `is-bottom-right`;
       break;
-   case 'left':
+    case 'left':
       clz = `is-left`;
       break;
-   case 'leftTop':
+    case 'leftTop':
       clz = `is-left-top`;
       break;
-   case 'leftBottom':
+    case 'leftBottom':
       clz = `is-left-bottom`;
       break;
-   case 'right':
+    case 'right':
       clz = `is-right`;
       break;
-   case 'rightTop':
+    case 'rightTop':
       clz = `is-right-top`;
       break;
-   case 'rightBottom':
+    case 'rightBottom':
       clz = `is-right-bottom`;
       break;
-   default:
-     break;
- }
- return clz;
+    default:
+      break;
+  }
+  return clz;
 }
