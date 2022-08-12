@@ -58,5 +58,6 @@ module.exports = {
       // chunks: ['vendor', 'docs'],
       inject: 'body',
     }),
+    !IS_DEV && new MiniCssExtractPlugin(),
   ],
 };
