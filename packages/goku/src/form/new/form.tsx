@@ -46,8 +46,7 @@ const _Form: React.ForwardRefRenderFunction<FormStore, React.PropsWithChildren<F
     </Provider>
   );
 };
-_Form.displayName = 'Form';
 
-const Form = React.forwardRef(_Form);
+export const Form = React.forwardRef(_Form);
 
-export { Form };
+Form.displayName = 'Form';
