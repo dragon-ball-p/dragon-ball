@@ -31,12 +31,12 @@ Static.storyName = '静态示例';
 
 export const Dynamic: ComponentStory<typeof Menu> = (args) => {
   const [active, setActive] = React.useState('2');
-  const { onClick, ...others } = args;
-  const _onClick = (e: React.MouseEvent, k: string) => {
+  const _onClick = (evt: React.MouseEvent, k: string) => {
+    console.log('clicked ', k, evt);
     setActive(k);
   };
   return (
-    <Menu {...others} onClick={_onClick}>
+    <Menu {...args} onClick={_onClick}>
       <MenuItem key="1" active={active === '1'}>
         第一个
       </MenuItem>

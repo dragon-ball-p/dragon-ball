@@ -14,15 +14,14 @@ export interface CardProps {
 }
 
 export const Card: React.FC<React.PropsWithChildren<CardProps>> = (props) => {
-  const { title, extra, actions, type, className, style, headerStyle, contentStyle, footerStyle, children, ...others } =
-    props;
+  const { title, extra, actions, type, className, headerStyle, contentStyle, footerStyle, children, ...others } = props;
 
   const clz = Classnames('card', className);
   const hClz = Classnames('card-header', { 'is-inner': type === 'inner' });
 
   console.log('Card::render::');
   return (
-    <div className={clz} style={style}>
+    <div className={clz} {...others}>
       {title ? (
         <header className={hClz} style={headerStyle}>
           <p className="card-header-title">{title}</p>

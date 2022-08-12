@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Classnames from 'classnames';
 import { ColorType, getColorClass } from '../config/color-type';
 import { SizeType, getSizeClass } from '../config/size-type';

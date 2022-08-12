@@ -40,7 +40,7 @@ export const Modal: React.FC<React.PropsWithChildren<ModalProps>> = (props) => {
     } else {
       onOpened && onOpened();
     }
-  }, [visible]);
+  }, [visible, onClosed, onOpened]);
 
   const _onOk = () => {
     if (!visible) return;

@@ -1964,7 +1964,7 @@ export const Static: ComponentStory<typeof Icon> = () => {
     'fa-yin-yang',
     'fa-z',
   ];
-  function onClick(type: string, evt: React.MouseEvent) {
+  function onClick(type: string) {
     const text = `<Icon type="${type.substring(3)}"/>`;
     console.log(text);
     navigator.clipboard.writeText(text).then(
