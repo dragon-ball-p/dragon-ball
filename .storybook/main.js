@@ -19,8 +19,21 @@ module.exports = {
   "framework": "@storybook/react",
   webpackFinal: async(config, {configType}) => {
     config.module.rules.push({
-      test: /\.s(c|a)ss$/,
-      use: ['style-loader', 'css-loader', 'sass-loader'],
+      test: /\.s[ca]ss$/,
+      use: [
+        'style-loader',
+        'css-loader',
+        {
+          loader: 'postcss-loader',
+          options: {
+            postcssOptions: {
+              plugins: [require('autoprefixer')],
+            },
+            sourceMap: true,
+          },
+        },
+        'sass-loader'
+      ],
       include: path.resolve(__dirname, '../'),
     });
     return config;

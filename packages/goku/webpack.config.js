@@ -41,11 +41,37 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/,
+        test: /\.s[ca]ss$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'sass-loader',
-        },
+        use: [
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [require('autoprefixer')],
+              },
+              sourceMap: true,
+            },
+          },
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [require('autoprefixer')],
+              },
+              sourceMap: true,
+            },
+          },
+        ],
       },
     ],
   },
