@@ -7,7 +7,7 @@ import { PopoverContent } from './popover-content';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Components/Popover',
+  title: 'Popover 弹出框',
   component: Popover,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   // argTypes: {

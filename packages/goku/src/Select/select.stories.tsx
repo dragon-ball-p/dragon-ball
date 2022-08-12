@@ -6,7 +6,7 @@ import { Option } from './option';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Components/Select',
+  title: 'Select 选择框',
   component: Select,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   // argTypes: {

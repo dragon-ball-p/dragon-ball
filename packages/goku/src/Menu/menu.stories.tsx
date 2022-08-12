@@ -5,7 +5,7 @@ import { MenuItem } from './menu-item';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Components/Menu',
+  title: 'Menu 菜单栏',
   component: Menu,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   // argTypes: {

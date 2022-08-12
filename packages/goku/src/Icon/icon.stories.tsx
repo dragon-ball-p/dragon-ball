@@ -4,7 +4,7 @@ import { Icon } from './icon';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Components/Icon',
+  title: 'Icon 图标',
   component: Icon,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   // argTypes: {

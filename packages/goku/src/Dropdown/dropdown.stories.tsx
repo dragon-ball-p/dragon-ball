@@ -9,7 +9,7 @@ import { MenuItem } from '../Menu/menu-item';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Components/Dropdown',
+  title: 'Dropdown 下拉框',
   component: Dropdown,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   // argTypes: {

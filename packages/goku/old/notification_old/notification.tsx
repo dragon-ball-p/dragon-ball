@@ -14,7 +14,7 @@ export interface NotificationProps {
 
 export interface NotificationRef {
   notify: (notice: NoticeContent) => void;
-  removeNotice: (key?: React.Key) => void;
+  removeNotice: (key: string) => void;
   destroy: () => void;
 }
 
@@ -41,11 +41,11 @@ const Notice: React.FunctionComponent<NoticeProps> = (props) => {
       transitionTimingFunction: 'linear',
       opacity: 1,
     };
-    const hidenStyle: React.CSSProperties = Object.assign({}, normalStyle, {
+    const hiddenStyle: React.CSSProperties = Object.assign({}, normalStyle, {
       opacity: 0,
     });
     const start = () => {
-      setStyle(hidenStyle);
+      setStyle(hiddenStyle);
       countdown.current = window.setTimeout(() => {
         handleClose(key);
       }, _duration);
@@ -93,7 +93,7 @@ export const Notification = React.forwardRef((props: NotificationProps, ref: Rea
       notice.key = notice.key || getUuid();
       setNotices((preNotices) => preNotices.concat(notice));
     },
-    removeNotice: (key: React.Key) => {
+    removeNotice: (key: string) => {
       setNotices((preNotices) => preNotices.filter((notice) => notice.key !== key));
     },
     destroy: () => {

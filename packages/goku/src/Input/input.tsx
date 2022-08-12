@@ -4,7 +4,7 @@ import { ColorType, getColorClass } from '../config/color-type';
 import { SizeType, getSizeClass } from '../config/size-type';
 import { StateType, getStateClass } from '../config/state-type';
 
-interface IInputProps {
+export interface IInputProps {
   /**
    * 初始值
    */

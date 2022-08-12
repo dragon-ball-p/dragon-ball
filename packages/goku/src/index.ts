@@ -1,10 +1,3 @@
-export { default as Button } from './button_old';
-export { default as Title } from './title_old';
-export { default as Card } from './card_old';
-export { default as Input } from './input_old';
-export { default as notification } from './notification_old';
-export { Form, FormItem, FormInstance } from './form';
-
 export * from './Button';
 export * from './Card';
 export * from './Dropdown';

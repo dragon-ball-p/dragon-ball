@@ -6,7 +6,7 @@ import { Icon } from '../Icon';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Components/Tabs',
+  title: 'Tabs 标签页',
   component: Tabs,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   // argTypes: {
