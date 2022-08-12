@@ -5,8 +5,9 @@ module.exports = {
   },
   extends: [
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
     'plugin:storybook/recommended',
   ],
   globals: {
@@ -18,14 +19,15 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'prettier'],
+  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'storybook'],
   rules: {
     // ...
     '@typescript-eslint/no-explicit-any': ['off'],
-    'prettier/prettier': ['error'],
     'react-hooks/rules-of-hooks': 'error', // 检查 Hook 的规则
     'react-hooks/exhaustive-deps': 'warn', // 检查 effect 的依赖
     'react/jsx-uses-react': 'warn',
     'react/jsx-uses-vars': 'warn',
+    'react/display-name': 'off',
+    'react/prop-types': 'off',
   },
 };

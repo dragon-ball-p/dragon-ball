@@ -26,7 +26,7 @@ export interface ButtonProps {
 
 export const Button = React.forwardRef<
   HTMLButtonElement,
-  React.PropsWithChildren<ButtonProps & React.HTMLAttributes<HTMLButtonElement | HTMLAnchorElement>>
+  ButtonProps & React.HTMLAttributes<HTMLButtonElement | HTMLAnchorElement>
 >((props, ref) => {
   const { type, size, state, disabled, href, className, children, ...others } = props;
 
@@ -92,7 +92,7 @@ export const Button = React.forwardRef<
   };
 
   return type === 'link' ? (
-    <a className={cls} href={href} ref={(buttonRef as unknown) as React.RefObject<HTMLAnchorElement>} {...others}>
+    <a className={cls} href={href} ref={buttonRef as unknown as React.RefObject<HTMLAnchorElement>} {...others}>
       {children}
     </a>
   ) : (
