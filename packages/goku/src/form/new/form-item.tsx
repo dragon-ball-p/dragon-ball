@@ -9,7 +9,7 @@ export interface FormItemProps {
   rules?: Rule[];
 }
 
-export const FormItem: React.FC<FormItemProps> = (props) => {
+export const FormItem: React.FC<React.PropsWithChildren<FormItemProps>> = (props) => {
   const { name, label, labelWidth, rules, children } = props;
 
   const store = React.useContext(FormContext);
@@ -21,6 +21,7 @@ export const FormItem: React.FC<FormItemProps> = (props) => {
     if (name) {
       return store.registerFormItem({ props, update: forceUpdate });
     }
+    return;
   }, [name, props, store]);
 
   // 注册规则
@@ -35,6 +36,7 @@ export const FormItem: React.FC<FormItemProps> = (props) => {
         }
       };
     }
+    return;
   }, [name, rules, store]);
   console.log('rerender FormItem', name);
   const getControls = () => ({

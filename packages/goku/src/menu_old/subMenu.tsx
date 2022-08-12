@@ -14,7 +14,7 @@ export interface ISubMenuProps {
   disabled?: boolean;
 }
 
-export const SubMenu: React.FC<ISubMenuProps> = (props) => {
+export const SubMenu: React.FC<React.PropsWithChildren<ISubMenuProps>> = (props) => {
   const { title, index, className, subClassName, open, disabled, children, ...others } = props;
   const ctx = useContext(MenuContext);
   const [isOpen, setIsOpen] = useState(open || false);

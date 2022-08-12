@@ -10,7 +10,7 @@ export interface FormProps {
   onSubmitFailed?: (errors: ErrorCache, values: Values) => void;
 }
 
-const _Form: React.ForwardRefRenderFunction<FormStore, FormProps> = (props, ref) => {
+const _Form: React.ForwardRefRenderFunction<FormStore, React.PropsWithChildren<FormProps>> = (props, ref) => {
   const { form, initialValues, onSubmit, onSubmitFailed, children } = props;
   const { Provider } = FormContext;
   const store = form || new FormStore(initialValues);

@@ -38,38 +38,33 @@ export const TwoItem: ComponentStory<typeof Form> = (args) => {
 const initialValues = { name: '张三', password: '123456' };
 const nameRules = { required: true, message: '请输入姓名！' };
 const passwdRules = { required: true, message: '请输入密码！' };
-class WrappedForm extends React.Component {
-  ref = React.createRef<FormStore>();
-  onSubmit = (values) => {
-    console.log('this.ref', this.ref);
+export const FF: ComponentStory<typeof Form> = (args) => {
+  const ref = React.useRef<FormStore>(null);
+  const onSubmit = (values) => {
+    console.log('this.ref', ref);
     console.log('on Submittttt ', values);
   };
-  onSubmitFailed = (errors, values) => {
-    console.log('this.ref', this.ref);
+  const onSubmitFailed = (errors, values) => {
+    console.log('this.ref', ref);
     console.log('on SubmitttttFailed ', errors, values);
   };
-  render() {
-    return (
-      <Form ref={this.ref} initialValues={initialValues} onSubmit={this.onSubmit} onSubmitFailed={this.onSubmitFailed}>
-        <FormItem label="姓名" name="name" rules={[nameRules]}>
-          <Input />
-        </FormItem>
-        <FormItem label="密码" name="password" rules={[passwdRules]}>
-          <Input />
-        </FormItem>
-        <FormItem label="别名" name="alias" rules={[{ min: 2 }, { max: 10 }, { required: true }]}>
-          <Input defaultValue="小三" />
-        </FormItem>
-        <FormItem label="输入框" name="input">
-          <Input />
-        </FormItem>
-        <FormItem>
-          <button type="submit">Submit3</button>
-        </FormItem>
-      </Form>
-    );
-  }
-}
-export const FF: ComponentStory<typeof Form> = (args) => {
-  return <WrappedForm {...args}></WrappedForm>;
+  return (
+    <Form ref={ref} initialValues={initialValues} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed} {...args}>
+      <FormItem label="姓名" name="name" rules={[nameRules]}>
+        <Input />
+      </FormItem>
+      <FormItem label="密码" name="password" rules={[passwdRules]}>
+        <Input />
+      </FormItem>
+      <FormItem label="别名" name="alias" rules={[{ min: 2 }, { max: 10 }, { required: true }]}>
+        <Input defaultValue="小三" />
+      </FormItem>
+      <FormItem label="输入框" name="input">
+        <Input />
+      </FormItem>
+      <FormItem>
+        <button type="submit">Submit3</button>
+      </FormItem>
+    </Form>
+  );
 };

@@ -8,7 +8,7 @@ export interface TitleProps {
   prefix?: string;
 }
 
-export interface TitleInterface extends React.FC<TitleProps> {
+export interface TitleInterface extends React.FC<React.PropsWithChildren<TitleProps>> {
   SubTitle?: React.FC<TitleProps>;
 }
 

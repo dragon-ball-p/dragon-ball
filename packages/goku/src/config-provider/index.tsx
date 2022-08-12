@@ -8,7 +8,7 @@ export interface SizeContextProps {
   size?: SizeType;
 }
 
-export const SizeContextProvider: React.FC<SizeContextProps> = ({ children, size }) => (
+export const SizeContextProvider: React.FC<React.PropsWithChildren<SizeContextProps>> = ({ children, size }) => (
   <SizeContext.Consumer>
     {(originSize) => <SizeContext.Provider value={size || originSize}>{children}</SizeContext.Provider>}
   </SizeContext.Consumer>

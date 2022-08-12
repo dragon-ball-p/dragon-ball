@@ -7,7 +7,7 @@ export interface CardContentProps {
   prefix?: string;
 }
 
-export const CardContent: React.FC<CardContentProps> = (props) => {
+export const CardContent: React.FC<React.PropsWithChildren<CardContentProps>> = (props) => {
   const { className, style, prefix, children, ...others } = props;
 
   const cls = classNames(`${prefix}card-content`, className);

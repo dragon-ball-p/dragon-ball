@@ -8,7 +8,7 @@ export interface CardFooterProps {
   prefix?: string;
 }
 
-export const CardFooter: React.FC<CardFooterProps> = (props) => {
+export const CardFooter: React.FC<React.PropsWithChildren<CardFooterProps>> = (props) => {
   const { items, className, style, prefix, children, ...others } = props;
 
   const cls = classNames(`${prefix}card-footer`, className);

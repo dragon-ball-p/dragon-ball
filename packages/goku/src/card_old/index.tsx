@@ -16,7 +16,7 @@ export interface CardProps {
   prefix?: string;
 }
 
-export interface CardInterface extends React.FC<CardProps> {
+export interface CardInterface extends React.FC<React.PropsWithChildren<CardProps>> {
   Header: typeof CardHeader;
   Image: typeof CardImage;
   Content: typeof CardContent;

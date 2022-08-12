@@ -8,7 +8,7 @@ export interface CardHeaderProps {
   prefix?: string;
 }
 
-export const CardHeader: React.FC<CardHeaderProps> = (props) => {
+export const CardHeader: React.FC<React.PropsWithChildren<CardHeaderProps>> = (props) => {
   const { icon, className, style, prefix, children, ...others } = props;
 
   const cls = classNames(`${prefix}card-header`, className);
