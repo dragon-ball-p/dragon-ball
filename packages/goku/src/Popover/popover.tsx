@@ -21,7 +21,9 @@ export const Popover: React.FC<PopoverProps> = (props) => {
     trigger = 'hover',
     visible = false,
     placement = 'bottomLeft',
-    onVisibleChange,
+    onVisibleChange = function () {
+      // do sth.
+    },
     className,
     children,
     ...others
@@ -34,12 +36,12 @@ export const Popover: React.FC<PopoverProps> = (props) => {
     onVisibleChange,
   });
 
-  const open = (evt: React.MouseEvent): void => {
+  const open = (): void => {
     if (trigger !== 'hover') return;
     if (ctx.visible) return;
     ctx.triggerVisible(true);
   };
-  const close = (evt: React.MouseEvent): void => {
+  const close = (): void => {
     if (trigger !== 'hover') return;
     if (!ctx.visible) return;
     ctx.triggerVisible(false);
@@ -50,7 +52,9 @@ export const Popover: React.FC<PopoverProps> = (props) => {
     {
       'is-active': ctx.visible,
     },
+    getColorClass(color),
     getPlacementClass(ctx.placement),
+    className,
   );
 
   console.log('Popover::render::');

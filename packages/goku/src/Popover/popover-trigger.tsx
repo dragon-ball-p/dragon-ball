@@ -11,17 +11,17 @@ export const PopoverTrigger: React.FC<React.PropsWithChildren<PopoverTriggerProp
   const clz = Classnames('dropdown-trigger', className);
   const ctx = useContext(PopoverContext);
 
-  const onClick = (evt: React.MouseEvent) => {
+  const onClick = () => {
     if (ctx.trigger !== 'click') return;
     if (ctx.visible) return;
     ctx.triggerVisible(true);
   };
-  const onFocus = (evt: React.FocusEvent) => {
+  const onFocus = () => {
     if (ctx.trigger !== 'focus') return;
     if (ctx.visible) return;
     ctx.triggerVisible(true);
   };
-  const onBlur = (evt: React.FocusEvent) => {
+  const onBlur = () => {
     if (ctx.trigger !== 'focus') return;
     if (!ctx.visible) return;
     ctx.triggerVisible(false);
@@ -40,7 +40,7 @@ export const PopoverTrigger: React.FC<React.PropsWithChildren<PopoverTriggerProp
     return () => {
       document.removeEventListener('click', clickHandler);
     };
-  }, [ref.current, ctx.visible, ctx.trigger]);
+  }, [ctx.visible, ctx.triggerVisible]);
 
   console.log('PopoverTrigger::render::');
   return (

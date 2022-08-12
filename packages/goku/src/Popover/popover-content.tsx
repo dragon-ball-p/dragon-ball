@@ -43,7 +43,7 @@ export const PopoverContent: React.FC<React.PropsWithChildren<PopoverContentProp
       currentElement.style.top = originTopStyle;
       currentElement.style.left = originLeftStyle;
     };
-  }, [ref.current, ctx.visible, ctx.placement]);
+  }, [ctx.visible, ctx.placement]);
 
   const relocation = useCallback(() => {
     if (!ctx.visible) return;
@@ -53,14 +53,7 @@ export const PopoverContent: React.FC<React.PropsWithChildren<PopoverContentProp
     // const currentElement = ref.current;
     const { width, height } = ref.current.getBoundingClientRect();
     const parentElement = ref.current.parentElement;
-    const {
-      top: pTop,
-      left: pLeft,
-      bottom: pBottom,
-      right: pRight,
-      width: pWidth,
-      height: pHeight,
-    } = parentElement.getBoundingClientRect();
+    const { top: pTop, left: pLeft, bottom: pBottom, right: pRight } = parentElement.getBoundingClientRect();
 
     const originalPlacement = ctx.placement;
     let transformedPlacement = originalPlacement;
@@ -155,7 +148,7 @@ export const PopoverContent: React.FC<React.PropsWithChildren<PopoverContentProp
     if (originalPlacement !== transformedPlacement) {
       ctx.autoPlacement(transformedPlacement);
     }
-  }, [ref.current, ctx.visible, ctx.placement]);
+  }, [ctx.visible, ctx.placement, ctx.autoPlacement]);
 
   useEffect(() => {
     relocation();
