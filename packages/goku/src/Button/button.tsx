@@ -28,9 +28,7 @@ interface IButtonProps {
   /**
    * 点击事件处理函数，可选
    */
-  onClick?: (
-    evt: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
-  ) => void;
+  onClick?: (evt: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
 }
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
@@ -38,8 +36,7 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   IButtonProps;
 
 const Button: React.FC<ButtonProps> = function (props) {
-  const { kind, size, className, state, disabled, href, onClick, children, ...others } =
-    props;
+  const { kind, size, className, state, disabled, href, onClick, children, ...others } = props;
 
   const _onClick = React.useCallback(
     (evt: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>): void => {
@@ -77,7 +74,9 @@ Button.displayName = 'Button';
 Button.defaultProps = {
   kind: 'default',
   size: 'normal',
-  onClick: () => {},
+  onClick: function () {
+    // do sth.
+  },
 };
 
 export { Button };

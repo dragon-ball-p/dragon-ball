@@ -27,23 +27,10 @@ interface IInputProps {
   state?: StateType;
 }
 
-export type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
-  IInputProps;
+export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & IInputProps;
 
-const InnerInput = (
-  props: InputProps,
-  ref: React.ForwardedRef<HTMLInputElement>,
-): JSX.Element => {
-  const {
-    defaultValue,
-    value,
-    iColor,
-    iSize,
-    state,
-    disabled,
-    onChange,
-    ...others
-  } = props;
+const InnerInput = (props: InputProps, ref: React.ForwardedRef<HTMLInputElement>): JSX.Element => {
+  const { defaultValue, value, iColor, iSize, state, disabled, onChange, ...others } = props;
 
   console.log('input props:: ', defaultValue, value, iSize, state, disabled);
 
@@ -79,15 +66,7 @@ const InnerInput = (
     _value = value as string;
   }
 
-  return (
-    <input
-      className={clz}
-      value={_value}
-      ref={_ref}
-      onChange={_onChange}
-      {...others}
-    ></input>
-  );
+  return <input className={clz} value={_value} ref={_ref} onChange={_onChange} {...others}></input>;
 };
 
 export const Input = React.forwardRef(InnerInput);

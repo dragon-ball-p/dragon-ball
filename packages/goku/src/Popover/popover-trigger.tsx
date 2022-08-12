@@ -15,29 +15,24 @@ export const PopoverTrigger: React.FC<React.PropsWithChildren<PopoverTriggerProp
     if (ctx.trigger !== 'click') return;
     if (ctx.visible) return;
     ctx.triggerVisible(true);
-  }
+  };
   const onFocus = (evt: React.FocusEvent) => {
     if (ctx.trigger !== 'focus') return;
     if (ctx.visible) return;
     ctx.triggerVisible(true);
-  }
+  };
   const onBlur = (evt: React.FocusEvent) => {
     if (ctx.trigger !== 'focus') return;
     if (!ctx.visible) return;
     ctx.triggerVisible(false);
-  }
+  };
 
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const clickHandler = (evt: MouseEvent): void => {
       // ref 引用 trigger 中的容器元素，若不包含事件触发节点，则关闭下拉框
-      if (
-        !(
-          ref.current &&
-          ref.current.contains(evt.target as Node)
-        )
-      ) {
+      if (!(ref.current && ref.current.contains(evt.target as Node))) {
         ctx.visible && ctx.triggerVisible(false);
       }
     };

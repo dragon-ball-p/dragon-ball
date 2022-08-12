@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import Classnames from 'classnames';
 import { ColorType, getColorClass } from '../config/color-type';
 import { Placement, getPlacementClass } from '../config/placement-type';
@@ -13,11 +13,19 @@ export interface IPopoverProps {
   className?: string;
 }
 
-
 export type PopoverProps = React.HTMLAttributes<HTMLElement> & IPopoverProps;
 
 export const Popover: React.FC<PopoverProps> = (props) => {
-  const { color, trigger = 'hover', visible = false, placement = 'bottomLeft', onVisibleChange = () => {}, className, children, ...others } = props;
+  const {
+    color,
+    trigger = 'hover',
+    visible = false,
+    placement = 'bottomLeft',
+    onVisibleChange,
+    className,
+    children,
+    ...others
+  } = props;
 
   const ctx = usePopoverContext({
     placement,
@@ -37,9 +45,13 @@ export const Popover: React.FC<PopoverProps> = (props) => {
     ctx.triggerVisible(false);
   };
 
-  const clz = Classnames('dropdown', {
-    'is-active': ctx.visible,
-  }, getPlacementClass(ctx.placement));
+  const clz = Classnames(
+    'dropdown',
+    {
+      'is-active': ctx.visible,
+    },
+    getPlacementClass(ctx.placement),
+  );
 
   console.log('Popover::render::');
   return (
@@ -56,5 +68,7 @@ Popover.defaultProps = {
   trigger: 'hover',
   visible: false,
   placement: 'bottomLeft',
-  onVisibleChange: () => {},
-}
+  onVisibleChange: function () {
+    // do sth.
+  },
+};

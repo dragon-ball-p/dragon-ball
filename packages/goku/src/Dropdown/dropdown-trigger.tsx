@@ -7,9 +7,7 @@ export const DropdownTrigger: React.FC<React.PropsWithChildren<DropdownTriggerPr
   const { children, ...others } = props;
 
   console.log('DropdownTrigger::render::');
-  return (
-    <PopoverTrigger {...others}>{children}</PopoverTrigger>
-  );
-}
+  return <PopoverTrigger {...others}>{children}</PopoverTrigger>;
+};
 
 DropdownTrigger.displayName = 'DropdownTrigger';

@@ -17,7 +17,19 @@ export interface TabsProps {
 }
 
 export const Tabs: React.FC<React.PropsWithChildren<TabsProps>> = (props) => {
-  const { defaultActiveKey, activeKey, alignment, size, kind, className, style, tabPosition, onChange, onTabClick, children, ...others } = props;
+  const {
+    defaultActiveKey,
+    activeKey,
+    alignment,
+    size,
+    kind,
+    className,
+    tabPosition,
+    onChange,
+    onTabClick,
+    children,
+    ...others
+  } = props;
 
   const [activeTab, setActiveTab] = useState(activeKey || defaultActiveKey);
 
@@ -27,7 +39,7 @@ export const Tabs: React.FC<React.PropsWithChildren<TabsProps>> = (props) => {
 
   useEffect(() => {
     activeTab && onChange && onChange(activeTab);
-  }, [activeTab]);
+  }, [activeTab, onChange]);
 
   const renderTabs = () => {
     let _active = activeTab;
@@ -39,7 +51,7 @@ export const Tabs: React.FC<React.PropsWithChildren<TabsProps>> = (props) => {
       if (React.isValidElement(child)) {
         if (child.type === TabPane) {
           const key = child.key as string;
-          const { tab, disabled, active } =  child.props as TabPaneProps;
+          const { tab, disabled, active } = child.props as TabPaneProps;
           if (!activeTab) {
             if (!_active && !disabled) {
               _active = key;
@@ -49,15 +61,17 @@ export const Tabs: React.FC<React.PropsWithChildren<TabsProps>> = (props) => {
             }
             return;
           }
-          const lClz = Classnames({'is-active': _active === key});
-          const clz = Classnames({'disabled': !!disabled});
+          const lClz = Classnames({ 'is-active': _active === key });
+          const clz = Classnames({ disabled: !!disabled });
           return (
             <li key={child.key} className={lClz}>
-              {
-                !!disabled
-                  ? <a  className={clz}>{tab}</a>
-                  : <a onClick={onClick.bind(null, key)} className={clz}>{tab}</a>
-              }
+              {!!disabled ? (
+                <a className={clz}>{tab}</a>
+              ) : (
+                <a onClick={onClick.bind(null, key)} className={clz}>
+                  {tab}
+                </a>
+              )}
             </li>
           );
         }
@@ -74,30 +88,28 @@ export const Tabs: React.FC<React.PropsWithChildren<TabsProps>> = (props) => {
     return React.Children.map(children, (child) => {
       if (React.isValidElement(child) && child.type === TabPane) {
         if (child.key === activeTab) {
-          return React.cloneElement(child, Object.assign({}, child.props, {active: true}));
+          return React.cloneElement(child, Object.assign({}, child.props, { active: true }));
         }
         return child;
       }
+      return;
     });
   };
 
   const aClz = alignment && ['centered', 'right'].includes(alignment) ? `is-${alignment}` : null;
   const kClz = kind && ['boxed', 'toggle', 'toggle-rounded', 'fullwidth'].includes(kind) ? `is-${kind}` : null;
-  const pClz = tabPosition && ['top', 'bottom', 'left', 'right'].includes(tabPosition) ? `position-${tabPosition}` : null;
+  const pClz =
+    tabPosition && ['top', 'bottom', 'left', 'right'].includes(tabPosition) ? `position-${tabPosition}` : null;
   const clz = Classnames('tabs', aClz, kClz, getSizeClass(size), pClz, className);
 
   console.log('Tabs::render::');
   return (
     <div className={clz} {...others}>
-      <ul>
-        { renderTabs() }
-      </ul>
-      <div className="tab-panes">
-        { renderPanes() }
-      </div>
+      <ul>{renderTabs()}</ul>
+      <div className="tab-panes">{renderPanes()}</div>
     </div>
-  )
-}
+  );
+};
 Tabs.displayName = 'Tabs';
 Tabs.defaultProps = {
   alignment: 'left',

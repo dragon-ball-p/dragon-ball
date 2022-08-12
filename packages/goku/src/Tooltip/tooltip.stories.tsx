@@ -24,7 +24,7 @@ Static.storyName = '静态示例';
 
 export const Dynamic: ComponentStory<typeof Tooltip> = (args) => {
   return (
-    <Tooltip {...args} style={{margin: '100px'}}>
+    <Tooltip {...args} style={{ margin: '100px' }}>
       <Button>提示</Button>
     </Tooltip>
   );

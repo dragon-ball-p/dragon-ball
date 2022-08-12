@@ -66,16 +66,16 @@ export const Icon: React.FC<IconProps> = (props) => {
     default:
       break;
   }
-  const iClz = Classnames('fas', `fa-${type}`, spin? 'fa-pulse': '', faSize);
+  const iClz = Classnames('fas', `fa-${type}`, spin ? 'fa-pulse' : '', faSize);
   return (
     <span className={oClz} {...others}>
       <i className={iClz}></i>
     </span>
-  )
+  );
 };
 
 Icon.displayName = 'Icon';
 Icon.defaultProps = {
   spin: false,
   size: 'normal',
-}
+};

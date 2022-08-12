@@ -7,9 +7,7 @@ export interface PopoverContentProps {
   arrow?: boolean;
 }
 
-export const PopoverContent: React.FC<
-  React.PropsWithChildren<PopoverContentProps>
-> = (props) => {
+export const PopoverContent: React.FC<React.PropsWithChildren<PopoverContentProps>> = (props) => {
   const { className, arrow, children, ...others } = props;
 
   const ctx = useContext(PopoverContext);
@@ -31,11 +29,11 @@ export const PopoverContent: React.FC<
     switch (ctx.placement) {
       case 'bottom':
       case 'top':
-        currentElement.style.left = `${(pWidth-width)/2}px`;
+        currentElement.style.left = `${(pWidth - width) / 2}px`;
         break;
       case 'left':
       case 'right':
-        currentElement.style.top = `${(pHeight-height)/2}px`;
+        currentElement.style.top = `${(pHeight - height) / 2}px`;
         break;
       default:
     }
@@ -44,7 +42,7 @@ export const PopoverContent: React.FC<
       // 消除前面加/删的 Class 或 Style
       currentElement.style.top = originTopStyle;
       currentElement.style.left = originLeftStyle;
-    }
+    };
   }, [ref.current, ctx.visible, ctx.placement]);
 
   const relocation = useCallback(() => {
@@ -55,7 +53,14 @@ export const PopoverContent: React.FC<
     // const currentElement = ref.current;
     const { width, height } = ref.current.getBoundingClientRect();
     const parentElement = ref.current.parentElement;
-    const { top: pTop, left: pLeft, bottom: pBottom, right: pRight, width: pWidth, height: pHeight } = parentElement.getBoundingClientRect();
+    const {
+      top: pTop,
+      left: pLeft,
+      bottom: pBottom,
+      right: pRight,
+      width: pWidth,
+      height: pHeight,
+    } = parentElement.getBoundingClientRect();
 
     const originalPlacement = ctx.placement;
     let transformedPlacement = originalPlacement;
@@ -158,7 +163,7 @@ export const PopoverContent: React.FC<
     window.addEventListener('resize', relocation);
     return () => {
       window.removeEventListener('resize', relocation);
-    }
+    };
   }, [relocation]);
 
   const clz = Classnames('dropdown-content', className);
@@ -167,15 +172,8 @@ export const PopoverContent: React.FC<
   return (
     <div className="dropdown-menu" ref={ref}>
       <div className={clz} {...others}>
-        { arrow
-          ? (
-            <div className="popover-arrow"></div>
-          )
-          : null
-        }
-        <div className="popover-content">
-          {children}
-        </div>
+        {arrow ? <div className="popover-arrow"></div> : null}
+        <div className="popover-content">{children}</div>
       </div>
     </div>
   );
@@ -184,4 +182,4 @@ export const PopoverContent: React.FC<
 PopoverContent.displayName = 'PopoverContent';
 PopoverContent.defaultProps = {
   arrow: false,
-}
+};

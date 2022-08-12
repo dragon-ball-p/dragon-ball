@@ -18,5 +18,5 @@ export const TabPane: React.FC<PropsWithChildren<TabPaneProps>> = (props) => {
     <div className={clz} style={style}>
       {children}
     </div>
-  )
-}
+  );
+};

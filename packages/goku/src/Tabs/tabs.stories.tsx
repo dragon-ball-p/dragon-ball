@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Tabs } from './tabs';
 import { TabPane } from './tab-pane';
@@ -36,14 +36,14 @@ export const Dynamic: ComponentStory<typeof Tabs> = (args) => {
       <TabPane key="5" tab="第五个">
         第五个 Tab 的内容
       </TabPane>
-    )
+    );
   }, []);
   const onChange = (key: string) => {
     console.log('tab::changed::', key);
-  }
+  };
   const onTabClick = (key: string, evt: React.MouseEvent) => {
-    console.log('tab::clicked::', key);
-  }
+    console.log('tab::clicked::', key, evt);
+  };
   return (
     <Tabs {...args} onChange={onChange} onTabClick={onTabClick}>
       <TabPane key="1" tab="第一个">
@@ -52,10 +52,26 @@ export const Dynamic: ComponentStory<typeof Tabs> = (args) => {
       <TabPane key="2" disabled tab="第二个">
         第二个 Tab 的内容
       </TabPane>
-      <TabPane key="3" tab={<div><Icon type="image"/><span>第三个</span></div>}>
+      <TabPane
+        key="3"
+        tab={
+          <div>
+            <Icon type="image" />
+            <span>第三个</span>
+          </div>
+        }
+      >
         第三个 Tab 的内容
       </TabPane>
-      <TabPane key="4" tab={<div><Icon type="desktop"/><span>第四个</span></div>}>
+      <TabPane
+        key="4"
+        tab={
+          <div>
+            <Icon type="desktop" />
+            <span>第四个</span>
+          </div>
+        }
+      >
         第四个 Tab 的内容
       </TabPane>
       {p}

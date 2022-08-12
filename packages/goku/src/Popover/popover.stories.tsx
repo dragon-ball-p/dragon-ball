@@ -22,9 +22,7 @@ export const Static: ComponentStory<typeof Popover> = () => {
       <PopoverTrigger>
         <Button>显示下拉框</Button>
       </PopoverTrigger>
-      <PopoverContent>
-        popover
-      </PopoverContent>
+      <PopoverContent>popover</PopoverContent>
     </Popover>
   );
 };
@@ -33,16 +31,14 @@ Static.storyName = '静态示例';
 export const Dynamic: ComponentStory<typeof Popover> = (args) => {
   const onVisibleChange = (visible: boolean) => {
     console.log('popover visible:: ', visible);
-  }
+  };
   return (
     <Popover {...args} onVisibleChange={onVisibleChange}>
       <PopoverTrigger>
-        <Button style={{padding: '40px'}}>显示下拉框</Button>
+        <Button style={{ padding: '40px' }}>显示下拉框</Button>
       </PopoverTrigger>
       <PopoverContent arrow>
-        <div style={{padding: '40px'}}>
-          {args.placement}
-        </div>
+        <div style={{ padding: '40px' }}>{args.placement}</div>
       </PopoverContent>
     </Popover>
   );
@@ -51,6 +47,6 @@ Dynamic.args = {
   visible: false,
   trigger: 'click',
   placement: 'bottom',
-  style: {top: '200px', left: '200px'},
+  style: { top: '200px', left: '200px' },
 };
 Dynamic.storyName = '动态示例';

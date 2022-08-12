@@ -14,10 +14,7 @@ export const Menu: React.FC<React.PropsWithChildren<MenuProps>> = (props) => {
 
   const renderChild = (child: React.ReactNode): React.ReactNode => {
     if (React.isValidElement(child) && child.type === MenuItem) {
-      const { props, key } = child as React.ReactElement<
-        MenuItemProps,
-        typeof MenuItem
-      >;
+      const { props, key } = child as React.ReactElement<MenuItemProps, typeof MenuItem>;
       const originalOnClick = props.onClick;
       const _onClick = (evt: React.MouseEvent): void => {
         if (!props.disabled) {
@@ -25,10 +22,7 @@ export const Menu: React.FC<React.PropsWithChildren<MenuProps>> = (props) => {
           onClick && onClick(evt, `${key}`);
         }
       };
-      return React.cloneElement(
-        child,
-        Object.assign({}, props, { onClick: _onClick }),
-      );
+      return React.cloneElement(child, Object.assign({}, props, { onClick: _onClick }));
     }
     return child;
   };
@@ -44,5 +38,7 @@ export const Menu: React.FC<React.PropsWithChildren<MenuProps>> = (props) => {
 
 Menu.displayName = 'Menu';
 Menu.defaultProps = {
-  onClick: () => {},
+  onClick: function () {
+    // do sth.
+  },
 };

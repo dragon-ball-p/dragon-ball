@@ -12,14 +12,10 @@ export default {
   // },
 } as ComponentMeta<typeof Button>;
 
-export const Static: ComponentStory<typeof Button> = () => (
-  <Button>Button</Button>
-);
+export const Static: ComponentStory<typeof Button> = () => <Button>Button</Button>;
 Static.storyName = '静态示例';
 
-export const Dynamic: ComponentStory<typeof Button> = (args) => (
-  <Button {...args}>Button</Button>
-);
+export const Dynamic: ComponentStory<typeof Button> = (args) => <Button {...args}>Button</Button>;
 Dynamic.args = {
   // kind: 'default',
   size: 'normal',

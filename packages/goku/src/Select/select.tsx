@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Classnames from 'classnames';
 import { ColorType, getColorClass } from '../config/color-type';
 import { SizeType, getSizeClass } from '../config/size-type';
@@ -56,6 +56,7 @@ export const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element
       return _child.props;
     } else {
       console.warn('not an invalid Option');
+      return;
     }
   })?.filter((item) => item);
 
@@ -79,19 +80,15 @@ export const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element
 
   return (
     <SelectContext.Provider value={ctx}>
-      <Popover trigger='click' style={style}>
+      <Popover trigger="click" style={style}>
         <PopoverTrigger>
           <Button className={clz}>
-            {
-              ctx.selected.length > 0 ? ctx.selected.map((item) => item.title).join('/') : placeholder
-            }
-            <Icon type="angle-down" style={{marginLeft: '4px'}}/>
+            {ctx.selected.length > 0 ? ctx.selected.map((item) => item.title).join('/') : placeholder}
+            <Icon type="angle-down" style={{ marginLeft: '4px' }} />
           </Button>
         </PopoverTrigger>
         <PopoverContent className={cClz} {...others}>
-          <Menu>
-            {children}
-          </Menu>
+          <Menu>{children}</Menu>
         </PopoverContent>
       </Popover>
     </SelectContext.Provider>

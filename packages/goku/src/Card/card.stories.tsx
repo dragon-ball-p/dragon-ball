@@ -14,8 +14,8 @@ export default {
 } as ComponentMeta<typeof Card>;
 
 export const Static: ComponentStory<typeof Card> = () => (
-  <Card title='外部卡片'>
-    <Card title='内部卡片' type='inner'>
+  <Card title="外部卡片">
+    <Card title="内部卡片" type="inner">
       卡片内容
     </Card>
   </Card>
@@ -23,15 +23,11 @@ export const Static: ComponentStory<typeof Card> = () => (
 Static.storyName = '静态示例';
 
 export const Dynamic: ComponentStory<typeof Card> = (args) => {
-  return <Card {...args}>Card</Card>
+  return <Card {...args}>Card</Card>;
 };
 Dynamic.args = {
   title: '卡片',
-  extra: <Icon type='x'></Icon>,
-  actions: [
-    'left',
-    'middle',
-    'right'
-  ],
+  extra: <Icon type="x"></Icon>,
+  actions: ['left', 'middle', 'right'],
 };
 Dynamic.storyName = '动态示例';

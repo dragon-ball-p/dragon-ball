@@ -7,9 +7,7 @@ export const DropdownContent: React.FC<React.PropsWithChildren<DropdownContentPr
   const { children, ...others } = props;
 
   console.log('DropdownContent::render::');
-  return (
-    <PopoverContent {...others}>{children}</PopoverContent>
-  );
-}
+  return <PopoverContent {...others}>{children}</PopoverContent>;
+};
 
 DropdownContent.displayName = 'DropdownContent';

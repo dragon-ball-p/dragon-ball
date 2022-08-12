@@ -16,15 +16,13 @@ export const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = (props) 
   const clz = Classnames('tooltip-content', className);
   return (
     <Popover placement={placement} visible={visible} style={style}>
-      <PopoverTrigger>
-        {children}
-      </PopoverTrigger>
+      <PopoverTrigger>{children}</PopoverTrigger>
       <PopoverContent arrow className={clz} {...others}>
         {title}
       </PopoverContent>
     </Popover>
-  )
-}
+  );
+};
 Tooltip.displayName = 'Tooltip';
 Tooltip.defaultProps = {
   title: '',

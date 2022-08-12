@@ -16,10 +16,10 @@ export const Option: React.FC<OptionProps> = (props) => {
   const ctx = useContext(SelectContext);
 
   const isSelected = !!ctx.selected.find((item) => item.value === value);
-  const onSelect = (evt: React.MouseEvent) => {
+  const onSelect = () => {
     if (props.disabled || isSelected) return;
     ctx.onSelect(props);
-  }
+  };
 
   return (
     <MenuItem onClick={onSelect} active={isSelected} {...others}>
