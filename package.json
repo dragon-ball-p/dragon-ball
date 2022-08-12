@@ -7,8 +7,8 @@
   "scripts": {
     "changelog": "conventional-changelog -p angular -i ChangeLog.md -s -r 0",
     "lint": "yarn lint:chichi && yarn lint:goku",
-    "lint:chichi": "eslint packages/chichi/src --ext .tsx",
-    "lint:goku": "eslint packages/goku/src --ext .tsx",
+    "lint:chichi": "eslint packages/chichi/src --ext .tsx,.ts",
+    "lint:goku": "eslint packages/goku/src --ext .tsx,.ts",
     "commit": "git-cz",
     "build": "lerna run --stream --sort build",
     "storybook": "start-storybook -p 6006",

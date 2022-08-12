@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "es6",
+    "target": "esnext",
+    "module": "esnext",
     "rootDirs": ["src", "./"],
     "outDir": "types",
     "newLine": "LF",
     "jsx": "react",
+    "esModuleInterop": true,
     "lib": ["dom", "es2018"],
     "moduleResolution": "node",
     "importHelpers": true,
@@ -20,7 +21,7 @@
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
