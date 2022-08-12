@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // import { Form } from './form';
 import { Form, FormItem, useForm, FormStore } from './new';
-import { Input } from '../input';
+import { Input } from '../input_old';
 
 console.log('ffff', Form, FormItem);
 export default {
