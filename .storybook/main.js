@@ -13,6 +13,9 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions"
   ],
+  core: {
+    builder: 'webpack5'
+  },
   "framework": "@storybook/react",
   webpackFinal: async(config, {configType}) => {
     config.module.rules.push({
