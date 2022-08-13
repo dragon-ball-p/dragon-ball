@@ -65,13 +65,6 @@
       "path": "./node_modules/cz-lerna-changelog"
     }
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -e $GIT_PARAMS",
-      "pre-push": "yarn changelog"
-    }
-  },
   "lint-staged": {
     "README.md": [
       "doctoc --notitle"
