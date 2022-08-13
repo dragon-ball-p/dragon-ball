@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const postConfig = require('./postcss.config');
 /* eslint-enable */
 
-const IS_DEV = !!process.env.WEBPACK_DEV_SERVER;
+const IS_DEV = !!process.env.WEBPACK_SERVE;
 
 module.exports = {
   mode: 'production',
@@ -78,6 +78,5 @@ module.exports = {
       // chunks: ['vendor', 'docs'],
       inject: 'body',
     }),
-    !IS_DEV && new MiniCssExtractPlugin(),
-  ],
+  ].concat(IS_DEV ? [] : [new MiniCssExtractPlugin()]),
 };

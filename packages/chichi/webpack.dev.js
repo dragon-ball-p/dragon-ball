@@ -6,6 +6,7 @@ const base = require('./webpack.config');
 
 module.exports = merger.merge(base, {
   mode: 'development',
+  devtool: 'cheap-module-source-map',
   entry: {
     main: ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/only-dev-server', './src/index.tsx'],
   },
