@@ -11,6 +11,7 @@ module.exports = {
   mode: 'production',
   entry: './src/index.tsx',
   output: {
+    clean: true,
     path: path.resolve(__dirname, 'lib'),
     filename: 'chichi.js',
     libraryTarget: 'umd',
