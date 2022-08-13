@@ -1,40 +1,9 @@
 {
+  "extends": "../../tsconfig",
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
     "rootDirs": ["src", "./"],
-    "outDir": "types",
-    "newLine": "LF",
-    "jsx": "react",
-    "esModuleInterop": true,
-    "lib": ["dom", "es2018"],
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "declaration": true,
-    "pretty": true,
-    "noUnusedLocals": true,
-    "skipLibCheck": true,
-    "strictNullChecks": true,
-    "noUnusedParameters": true,
-    "removeComments": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmitOnError": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "downlevelIteration": false,
+    "outDir": "types"
   },
-  "exclude": [
-    "lib",
-    "es",
-    "node_modules",
-    "dist",
-    "__tests__"
-  ],
   "include": ["src"]
 }
 
