@@ -4,7 +4,7 @@ import { ColorType, getColorClass } from '../config/color-type';
 import { SizeType, getSizeClass } from '../config/size-type';
 import { StateType, getStateClass } from '../config/state-type';
 
-interface IButtonProps {
+export interface ButtonProps {
   /**
    * button 类型，默认 'default'
    */
@@ -31,11 +31,9 @@ interface IButtonProps {
   onClick?: (evt: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
 }
 
-export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
-  React.AnchorHTMLAttributes<HTMLAnchorElement> &
-  IButtonProps;
-
-const Button: React.FC<ButtonProps> = function (props) {
+export const Button: React.FC<
+  ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement> & React.AnchorHTMLAttributes<HTMLAnchorElement>
+> = function (props) {
   const { kind, size, className, state, disabled, href, onClick, children, ...others } = props;
 
   const _onClick = React.useCallback(
@@ -78,5 +76,3 @@ Button.defaultProps = {
     // do sth.
   },
 };
-
-export { Button };

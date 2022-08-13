@@ -17,12 +17,12 @@ Static.storyName = '静态示例';
 
 export const Dynamic: ComponentStory<typeof Button> = (args) => <Button {...args}>Button</Button>;
 Dynamic.args = {
-  // kind: 'default',
+  kind: 'default',
   size: 'normal',
   disabled: false,
   href: '',
   target: '_blank',
-  onClick: (evt) => {
+  onClick: (evt: React.MouseEvent) => {
     console.log('button is clicked ', evt.target);
   },
 };
