@@ -13,7 +13,7 @@
     "commit": "git-cz",
     "build": "lerna run --stream --sort build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -o docs"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
