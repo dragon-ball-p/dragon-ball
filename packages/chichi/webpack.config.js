@@ -16,7 +16,7 @@ module.exports = {
     libraryTarget: 'umd',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.css'],
+    extensions: ['.ts', '.tsx', '.js', '.css', '.scss', '.sass'],
   },
   module: {
     rules: [
@@ -44,6 +44,26 @@ module.exports = {
               sourceMap: true,
             },
           },
+        ],
+      },
+      {
+        test: /\.s[ac]ss$/,
+        use: [
+          IS_DEV ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ...postConfig,
+              sourceMap: true,
+            },
+          },
+          'sass-loader',
         ],
       },
       {

@@ -1,39 +1,11 @@
 {
+  "extends": "../../tsconfig",
   "compilerOptions": {
-    "target": "es5",
-    "module": "es2020",
     "rootDir": "src",
     "outDir": "types",
-    "newLine": "LF",
-    "jsx": "react",
-    "lib": ["dom", "es2018"],
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "declaration": true,
-    "pretty": true,
-    "noUnusedLocals": true,
-    "skipLibCheck": true,
-    "strictNullChecks": true,
-    "noUnusedParameters": true,
-    "removeComments": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "noEmitOnError": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "downlevelIteration": false,
+    "noEmit": false
   },
-  "exclude": [
-    "lib",
-    "es",
-    "node_modules",
-    "dist",
-    "__tests__"
-  ],
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/Form.tsx", "src/Notification.tsx"]
 }
 
