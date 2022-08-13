@@ -10,6 +10,7 @@ export * from './Select';
 export * from './Tabs';
 export * from './Tooltip';
 
+import './styles/index.scss';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-ignore
 const version: string = __VERSION__;

@@ -11,6 +11,7 @@
   "license": "MIT",
   "main": "lib/goku.js",
   "typings": "types/index.d.ts",
+  "style": "lib/goku.css",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -28,7 +29,7 @@
   },
   "scripts": {
     "test": "jest --watch",
-    "start": "webpack --progress --watch --mode development",
+    "start": "webpack --progress --watch --config webpack.dev.js",
     "build": "webpack --progress --config webpack.config.js"
   },
   "bugs": {

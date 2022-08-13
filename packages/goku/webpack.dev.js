@@ -6,9 +6,6 @@ const base = require('./webpack.config');
 
 module.exports = merger.merge(base, {
   mode: 'development',
-  devtool: 'inline-cheap-module-source-map',
-  entry: {
-    main: ['./src/index.ts'],
-  },
+  devtool: 'cheap-module-source-map',
   plugins: [new webpack.HotModuleReplacementPlugin()],
 });
