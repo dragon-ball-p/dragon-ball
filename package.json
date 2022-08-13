@@ -5,6 +5,7 @@
     "packages/*"
   ],
   "scripts": {
+    "postinstall": "husky install",
     "changelog": "conventional-changelog -p angular -i ChangeLog.md -s -r 0",
     "lint": "yarn lint:chichi && yarn lint:goku",
     "lint:chichi": "eslint packages/chichi/src --ext .tsx,.ts",
