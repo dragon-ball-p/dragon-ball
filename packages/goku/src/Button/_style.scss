@@ -11,6 +11,22 @@
       color: $link-hover;
       text-decoration: $link-hover-decoration;
     }
+
+    &.active,
+    &:active {
+      background-color: transparent;
+      color: $link-active;
+      text-decoration: $link-hover-decoration;
+    }
+
+    &.disabled,
+    &:disabled {
+      opacity: 0.5;
+      pointer-events: none;
+      background-color: transparent;
+      border-color: transparent;
+    }
+
     &.focus,
     &:focus {
       color: $link-focus;
@@ -20,26 +36,13 @@
         box-shadow: none;
       }
     }
-    &.active,
-    &:active {
-      background-color: transparent;
-      color: $link-active;
-      text-decoration: $link-hover-decoration;
-    }
-    &.disabled,
-    &:disabled {
-      opacity: 0.5;
-
-      pointer-events: none;
-      background-color: transparent;
-      border-color: transparent;
-    }
   }
 
   &.disabled,
   &[disabled] {
     cursor: not-allowed;
     box-shadow: none;
+
     > * {
       pointer-events: none;
     }

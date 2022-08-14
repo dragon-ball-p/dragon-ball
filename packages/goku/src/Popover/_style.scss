@@ -10,7 +10,7 @@
   height: 6px;
   top: 3px;
   left: calc(50% - 4px);
-  transform: translate(0px, 0px) rotate(45deg);
+  transform: translate(0, 0) rotate(45deg);
   background-color: inherit;;
   z-index: 1;
 }
@@ -28,12 +28,12 @@
       padding-right: initial;
       padding-bottom: $dropdown-content-offset;
       padding-left: initial;
-
       top: auto;
       bottom: 100%;
       left: auto;
       right: auto;
     }
+
     .popover-arrow {
       top: auto;
       bottom: 3px;
@@ -41,23 +41,28 @@
       right: auto;
     }
   }
+
   &.is-top-left {
     .dropdown-menu {
       left: 0;
     }
+
     .popover-arrow {
       left: 0.5rem;
     }
   }
+
   &.is-top-right {
     .dropdown-menu {
       right: 0;
     }
+
     .popover-arrow {
       left: auto;
       right: 0.5rem;
     }
   }
+
   &.is-bottom,
   &.is-bottom-left,
   &.is-bottom-right {
@@ -66,7 +71,6 @@
       padding-right: initial;
       padding-bottom: initial;
       padding-left: initial;
-
       top: 100%;
       bottom: auto;
       left: auto;
@@ -80,23 +84,28 @@
       right: auto;
     }
   }
+
   &.is-bottom-left {
     .dropdown-menu {
       left: 0;
     }
+
     .popover-arrow {
       left: 0.5rem;
     }
   }
+
   &.is-bottom-right {
     .dropdown-menu {
       right: 0;
     }
+
     .popover-arrow {
       left: auto;
       right: 0.5rem;
     }
   }
+
   &.is-left,
   &.is-left-top,
   &.is-left-bottom {
@@ -105,7 +114,6 @@
       padding-bottom: initial;
       padding-left: initial;
       padding-right: $dropdown-content-offset;
-
       top: auto;
       bottom: auto;
       left: auto;
@@ -119,23 +127,28 @@
       right: 3px;
     }
   }
+
   &.is-left-top {
     .dropdown-menu {
       top: 0;
     }
+
     .popover-arrow {
       top: 0.5rem;
     }
   }
+
   &.is-left-bottom {
     .dropdown-menu {
       bottom: 0;
     }
+
     .popover-arrow {
       top: auto;
       bottom: 0.5rem;
     }
   }
+
   &.is-right,
   &.is-right-top,
   &.is-right-bottom {
@@ -144,7 +157,6 @@
       padding-bottom: initial;
       padding-left: $dropdown-content-offset;
       padding-right: initial;
-
       top: auto;
       bottom: auto;
       left: 100%;
@@ -158,18 +170,22 @@
       right: auto;
     }
   }
+
   &.is-right-top {
     .dropdown-menu {
       top: 0;
     }
+
     .popover-arrow {
       top: 0.5rem;
     }
   }
+
   &.is-right-bottom {
     .dropdown-menu {
       bottom: 0;
     }
+
     .popover-arrow {
       top: auto;
       bottom: 0.5rem;

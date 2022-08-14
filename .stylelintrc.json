@@ -1,3 +1,8 @@
 {
-  "extends": ["stylelint-config-standard-scss"]
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier"],
+  "rules": {
+    "color-function-notation": "legacy",
+    "no-empty-source": null,
+    "declaration-block-no-redundant-longhand-properties": null
+  }
 }

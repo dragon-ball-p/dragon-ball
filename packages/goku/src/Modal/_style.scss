@@ -18,6 +18,7 @@
 
 .modal-header {
   @extend %card-item;
+
   background-color: $card-header-background-color;
   align-items: stretch;
   border-bottom: $card-footer-border-top;
@@ -31,6 +32,7 @@
   flex-grow: 1;
   font-weight: $card-header-weight;
   padding: $card-header-padding;
+
   &.is-centered {
     justify-content: center;
   }
@@ -48,12 +50,14 @@
 
 .modal-body {
   @extend %card-item;
+
   background-color: $card-content-background-color;
   padding: $card-content-padding;
 }
 
 .modal-footer {
   @extend %card-item;
+
   background-color: $card-footer-background-color;
   border-top: $card-footer-border-top;
   align-items: stretch;
