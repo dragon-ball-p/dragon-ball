@@ -2,8 +2,9 @@
   display: inline-block;
   margin: 6px;
 }
-.navigator a:after {
+
+.navigator a::after {
   display: inline-block;
   margin-left: 6px;
-  content: '|';
+  content: "|";
 }

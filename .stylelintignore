@@ -1,0 +1,12 @@
+// .stylelintignore
+docs
+node_modules
+lib
+.js
+.tsx
+.ts
+.json
+.png
+.eot
+.ttf
+.woff
