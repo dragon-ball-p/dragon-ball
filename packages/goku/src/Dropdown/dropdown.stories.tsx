@@ -39,17 +39,17 @@ Static.storyName = '静态示例';
 export const Dynamic: ComponentStory<typeof Dropdown> = (args) => {
   return (
     <Dropdown {...args}>
-      <DropdownTrigger>
+      <Dropdown.Trigger>
         <Button>显示下拉框</Button>
-      </DropdownTrigger>
-      <DropdownContent>
+      </Dropdown.Trigger>
+      <Dropdown.Content>
         <Menu>
           <MenuItem key="1">第一个</MenuItem>
           <MenuItem key="2">第二个</MenuItem>
           <MenuItem key="3">第三个</MenuItem>
           <MenuItem key="4">第三个</MenuItem>
         </Menu>
-      </DropdownContent>
+      </Dropdown.Content>
     </Dropdown>
   );
 };
