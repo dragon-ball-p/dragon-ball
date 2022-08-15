@@ -1,0 +1,22 @@
+a {
+  max-height: $tab-title-size-normal;
+  overflow: hidden;
+}
+
+&.is-large {
+  a {
+    max-height: $tab-title-size-large;
+  }
+}
+
+&.is-medium {
+  a {
+    max-height: $tab-title-size-medium;
+  }
+}
+
+&.is-small {
+  a {
+    max-height: $tab-title-size-small;
+  }
+}
