@@ -14,7 +14,7 @@ export interface SelectProps {
   /**
    * 边框颜色
    */
-  color?: ColorType;
+  color?: ColorType | 'default';
   /**
    * 大小
    */
@@ -33,7 +33,11 @@ export interface SelectProps {
   style?: React.CSSProperties;
 }
 
-export const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element => {
+export interface Select extends React.FC<React.PropsWithChildren<SelectProps>> {
+  Option: typeof Option;
+}
+
+export const Select: Select = (props) => {
   const {
     color,
     iSize,
@@ -70,7 +74,7 @@ export const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element
     onChange,
   });
 
-  const kClz = getColorClass(color);
+  const kClz = getColorClass(color as ColorType);
   const sClz = getSizeClass(iSize) || 'is-normal';
   const stClz = getStateClass(state);
   const dClz = disabled ? 'disabled' : '';
@@ -94,6 +98,8 @@ export const Select = (props: React.PropsWithChildren<SelectProps>): JSX.Element
     </SelectContext.Provider>
   );
 };
+
+Select.Option = Option;
 
 Select.displayName = 'Select';
 Select.defaultProps = {

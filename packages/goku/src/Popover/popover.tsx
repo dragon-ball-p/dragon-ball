@@ -73,7 +73,7 @@ export const Popover: Popover = (props) => {
 };
 
 Popover.Trigger = PopoverTrigger;
-Popover.Conte = PopoverConte;
+Popover.Content = PopoverContent;
 
 Popover.displayName = 'Popover';
 Popover.defaultProps = {
