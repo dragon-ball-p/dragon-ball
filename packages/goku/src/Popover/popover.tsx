@@ -3,8 +3,10 @@ import Classnames from 'classnames';
 import { ColorType, getColorClass } from '../config/color-type';
 import { Placement, getPlacementClass } from '../config/placement-type';
 import { PopoverContext, usePopoverContext, Trigger } from './context';
+import { PopoverTrigger } from './popover-trigger';
+import { PopoverContent } from './popover-content';
 
-export interface IPopoverProps {
+export interface PopoverProps {
   color?: ColorType;
   trigger?: Trigger;
   visible?: boolean;
@@ -13,9 +15,12 @@ export interface IPopoverProps {
   className?: string;
 }
 
-export type PopoverProps = React.HTMLAttributes<HTMLElement> & IPopoverProps;
+export interface Popover extends React.FC<React.HTMLAttributes<HTMLElement> & PopoverProps> {
+  Trigger: typeof PopoverTrigger;
+  Content: typeof PopoverContent;
+}
 
-export const Popover: React.FC<PopoverProps> = (props) => {
+export const Popover: Popover = (props) => {
   const {
     color,
     trigger = 'hover',
@@ -66,6 +71,9 @@ export const Popover: React.FC<PopoverProps> = (props) => {
     </PopoverContext.Provider>
   );
 };
+
+Popover.Trigger = PopoverTrigger;
+Popover.Conte = PopoverConte;
 
 Popover.displayName = 'Popover';
 Popover.defaultProps = {

@@ -34,12 +34,12 @@ export const Dynamic: ComponentStory<typeof Popover> = (args) => {
   };
   return (
     <Popover {...args} onVisibleChange={onVisibleChange}>
-      <PopoverTrigger>
+      <Popover.Trigger>
         <Button style={{ padding: '40px' }}>显示下拉框</Button>
-      </PopoverTrigger>
-      <PopoverContent arrow>
+      </Popover.Trigger>
+      <Popover.Content arrow>
         <div style={{ padding: '40px' }}>{args.placement}</div>
-      </PopoverContent>
+      </Popover.Content>
     </Popover>
   );
 };

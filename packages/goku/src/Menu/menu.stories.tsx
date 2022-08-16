@@ -37,18 +37,18 @@ export const Dynamic: ComponentStory<typeof Menu> = (args) => {
   };
   return (
     <Menu {...args} onClick={_onClick}>
-      <MenuItem key="1" active={active === '1'}>
+      <Menu.Item key="1" active={active === '1'}>
         第一个
-      </MenuItem>
-      <MenuItem key="2" active={active === '2'}>
+      </Menu.Item>
+      <Menu.Item key="2" active={active === '2'}>
         第二个
-      </MenuItem>
-      <MenuItem key="3" active={active === '3'} disabled>
+      </Menu.Item>
+      <Menu.Item key="3" active={active === '3'} disabled>
         第三个
-      </MenuItem>
-      <MenuItem key="4" active={active === '4'}>
+      </Menu.Item>
+      <Menu.Item key="4" active={active === '4'}>
         第四个
-      </MenuItem>
+      </Menu.Item>
     </Menu>
   );
 };
