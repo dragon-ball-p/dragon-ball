@@ -1,4 +1,3 @@
-/* stylelint-disable */
 &.position-bottom {
   flex-direction: column-reverse;
 
@@ -39,43 +38,31 @@
   &.is-boxed {
     a {
       border-radius: 0 0 $tabs-boxed-link-radius $tabs-boxed-link-radius;
-
-      &:hover {
-        border-bottom-color: transparent;
-        border-top-color: $tabs-boxed-link-hover-border-bottom-color;
-      }
     }
   }
 
-  li {
-    &.is-active {
-      a {
-        border-bottom-color: transparent;
-        border-top-color: $tabs-link-active-border-bottom-color;
-      }
+  li.is-active {
+    a {
+      border-bottom-color: transparent;
+      border-top-color: $tabs-link-active-border-bottom-color;
     }
   }
 
-  &.is-toggle {
-    li {
-      &.is-active {
-        a {
-          border-color: $tabs-toggle-link-active-border-color;
-        }
-      }
+  &.is-boxed a:hover {
+    border-bottom-color: transparent;
+    border-top-color: $tabs-boxed-link-hover-border-bottom-color;
+  }
+
+  &.is-toggle li.is-active {
+    a {
+      border-color: $tabs-toggle-link-active-border-color;
     }
   }
 
-  &.is-boxed {
-    li {
-      &.is-active {
-        a {
-          border-bottom-color: $tabs-boxed-link-active-border-color !important;
-          border-top-color: $tabs-boxed-link-active-border-bottom-color !important;
-        }
-      }
+  &.is-boxed li.is-active {
+    a {
+      border-bottom-color: $tabs-boxed-link-active-border-color !important;
+      border-top-color: $tabs-boxed-link-active-border-bottom-color !important;
     }
   }
 }
-
-/* stylelint-enable */

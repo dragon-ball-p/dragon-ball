@@ -1,4 +1,3 @@
-/* stylelint-disable */
 &.position-left {
   flex-direction: row;
 
@@ -31,32 +30,9 @@
     }
   }
 
-  li {
-    &.is-active {
-      a {
-        border-bottom-color: transparent;
-        border-right-color: $tabs-link-active-border-bottom-color;
-      }
-    }
-  }
-
   &.is-boxed {
     a {
       border-radius: $tabs-boxed-link-radius 0 0 $tabs-boxed-link-radius;
-
-      &:hover{
-        border-bottom-color: transparent;
-        border-right-color: $tabs-boxed-link-hover-border-bottom-color;
-      }
-    }
-
-    li {
-      &.is-active {
-        a {
-          border-bottom-color: $tabs-boxed-link-active-border-color !important;
-          border-right-color: $tabs-boxed-link-active-border-bottom-color !important;
-        }
-      }
     }
   }
 
@@ -69,40 +45,59 @@
     a {
       margin-right: 0;
       border-bottom-color: $tabs-border-bottom-color;
+    }
+  }
 
-      &:hover {
-        border-bottom-color: $tabs-border-bottom-color;
-      }
+  li.is-active {
+    a {
+      border-bottom-color: transparent;
+      border-right-color: $tabs-link-active-border-bottom-color;
+    }
+  }
+
+  &.is-boxed a:hover {
+    border-bottom-color: transparent;
+    border-right-color: $tabs-boxed-link-hover-border-bottom-color;
+  }
+
+  &.is-toggle a:hover {
+    border-bottom-color: $tabs-border-bottom-color;
+  }
+
+  &.is-boxed li.is-active {
+    a {
+      border-bottom-color: $tabs-boxed-link-active-border-color !important;
+      border-right-color: $tabs-boxed-link-active-border-bottom-color !important;
+    }
+  }
+
+  &.is-toggle li {
+    & + li {
+      margin-left: 0;
+      margin-top: -#{$tabs-toggle-link-border-width};
     }
 
-    li {
-      & + li {
-        margin-left: 0;
-        margin-top: -#{$tabs-toggle-link-border-width};
-      }
+    &:first-child a {
+      border-radius: $tabs-boxed-link-radius $tabs-boxed-link-radius 0 0;
+    }
 
+    &:last-child a {
+      border-radius: 0 0 $tabs-boxed-link-radius $tabs-boxed-link-radius;
+    }
+  }
+
+  &.is-toggle.is-toggle-rounded {
+    li {
       &:first-child a {
-        border-radius: $tabs-boxed-link-radius $tabs-boxed-link-radius 0 0;
+        border-radius: $radius-rounded $radius-rounded 0 0;
+        padding-left: 0;
+        padding-top: 1.25em;
       }
 
       &:last-child a {
-        border-radius: 0 0 $tabs-boxed-link-radius $tabs-boxed-link-radius;
-      }
-    }
-
-    &.is-toggle-rounded {
-      li {
-        &:first-child a {
-          border-radius: $radius-rounded $radius-rounded 0 0;
-          padding-left: 0;
-          padding-top: 1.25em;
-        }
-
-        &:last-child a {
-          border-radius: 0 0 $radius-rounded $radius-rounded;
-          padding-right: 0;
-          padding-bottom: 1.25em;
-        }
+        border-radius: 0 0 $radius-rounded $radius-rounded;
+        padding-right: 0;
+        padding-bottom: 1.25em;
       }
     }
   }
@@ -129,4 +124,3 @@
     }
   }
 }
-/* stylelint-enable */
