@@ -4,6 +4,7 @@
     "color-function-notation": "legacy",
     "no-empty-source": null,
     "declaration-block-no-redundant-longhand-properties": null,
-    "no-invalid-position-at-import-rule": null
+    "no-invalid-position-at-import-rule": null,
+    "indentation": [2]
   }
 }
