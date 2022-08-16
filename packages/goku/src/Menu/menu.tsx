@@ -8,7 +8,10 @@ export interface MenuProps {
   onClick?: (evt: React.MouseEvent, key: string) => void;
 }
 
-export const Menu: React.FC<React.PropsWithChildren<MenuProps>> = (props) => {
+export interface Menu extends React.FC<React.PropsWithChildren<MenuProps>> {
+  Item: typeof MenuItem;
+}
+export const Menu: Menu = (props) => {
   const { label, className, onClick, children, ...others } = props;
   const clz = Classnames(className, 'menu');
 
@@ -35,6 +38,8 @@ export const Menu: React.FC<React.PropsWithChildren<MenuProps>> = (props) => {
     </div>
   );
 };
+
+Menu.Item = MenuItem;
 
 Menu.displayName = 'Menu';
 Menu.defaultProps = {
