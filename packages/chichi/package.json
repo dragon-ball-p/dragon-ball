@@ -1,6 +1,6 @@
 {
   "name": "@dragon-ball/chichi",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.1-alpha.0",
   "description": "dragon ball site",
   "author": {
     "name": "poplark",
@@ -38,7 +38,7 @@
     "webpack-dev-server": "^4.10.0"
   },
   "dependencies": {
-    "@dragon-ball/goku": "^0.1.0-alpha.0",
+    "@dragon-ball/goku": "^0.1.1-alpha.0",
     "react-router-dom": "^6.0.0"
   },
   "gitHead": "7d4ee10185c166d4cdd3717cf5b813c1f3967263"
