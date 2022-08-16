@@ -16,7 +16,10 @@ export interface TabsProps {
   onTabClick?: (key: string, evt: React.MouseEvent) => void;
 }
 
-export const Tabs: React.FC<React.PropsWithChildren<TabsProps>> = (props) => {
+export interface Tabs extends React.FC<React.PropsWithChildren<TabsProps>> {
+  Pane: typeof TabPane;
+}
+export const Tabs: Tabs = (props) => {
   const {
     defaultActiveKey,
     activeKey,
@@ -110,6 +113,8 @@ export const Tabs: React.FC<React.PropsWithChildren<TabsProps>> = (props) => {
     </div>
   );
 };
+Tabs.Pane = TabPane;
+
 Tabs.displayName = 'Tabs';
 Tabs.defaultProps = {
   alignment: 'left',

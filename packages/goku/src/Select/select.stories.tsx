@@ -17,8 +17,8 @@ export default {
 
 export const Static: ComponentStory<typeof Select> = () => (
   <Select>
-    <Option key="1" value={1} title="第一个"></Option>
-    <Option key="2" value={2} title="第二个"></Option>
+    <Select.Option key="1" value={1} title="第一个"></Select.Option>
+    <Select.Option key="2" value={2} title="第二个"></Select.Option>
   </Select>
 );
 Static.storyName = '静态示例';

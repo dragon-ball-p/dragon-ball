@@ -33,9 +33,9 @@ Static.storyName = '静态示例';
 export const Dynamic: ComponentStory<typeof Tabs> = (args) => {
   const p = React.useMemo(() => {
     return (
-      <TabPane key="5" tab="第五个">
+      <Tabs.Pane key="5" tab="第五个">
         第五个 Tab 的内容
-      </TabPane>
+      </Tabs.Pane>
     );
   }, []);
   const onChange = (key: string) => {
@@ -46,13 +46,13 @@ export const Dynamic: ComponentStory<typeof Tabs> = (args) => {
   };
   return (
     <Tabs {...args} onChange={onChange} onTabClick={onTabClick}>
-      <TabPane key="1" tab="第一个">
+      <Tabs.Pane key="1" tab="第一个">
         第一个 Tab 的内容
-      </TabPane>
-      <TabPane key="2" disabled tab="第二个">
+      </Tabs.Pane>
+      <Tabs.Pane key="2" disabled tab="第二个">
         第二个 Tab 的内容
-      </TabPane>
-      <TabPane
+      </Tabs.Pane>
+      <Tabs.Pane
         key="3"
         tab={
           <div>
@@ -62,8 +62,8 @@ export const Dynamic: ComponentStory<typeof Tabs> = (args) => {
         }
       >
         第三个 Tab 的内容
-      </TabPane>
-      <TabPane
+      </Tabs.Pane>
+      <Tabs.Pane
         key="4"
         tab={
           <div>
@@ -73,11 +73,11 @@ export const Dynamic: ComponentStory<typeof Tabs> = (args) => {
         }
       >
         第四个 Tab 的内容
-      </TabPane>
+      </Tabs.Pane>
       {p}
-      <TabPane key="6" tab="第六个">
+      <Tabs.Pane key="6" tab="第六个">
         第六个 Tab 的内容
-      </TabPane>
+      </Tabs.Pane>
     </Tabs>
   );
 };
