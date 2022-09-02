@@ -1,4 +1,10 @@
-# [](https://github.com/dragon-ball-p/dragon-ball/compare/v0.1.1-alpha.0...v) (2022-08-16)
+# [](https://github.com/dragon-ball-p/dragon-ball/compare/v0.1.1-alpha.0...v) (2022-09-02)
+
+
+### Features
+
+* 初步完成 Checkbox 组件 ([4ffabb4](https://github.com/dragon-ball-p/dragon-ball/commit/4ffabb471661bdc780d5b1b41523e7ede05e2b38))
+* checkbox 添加非受控模式 ([298e180](https://github.com/dragon-ball-p/dragon-ball/commit/298e180fa1b9953787412124500c523e52aa4525))
 
 
 
