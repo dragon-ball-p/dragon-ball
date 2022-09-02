@@ -12,7 +12,7 @@ export interface CheckboxProps {
    */
   checked?: boolean;
   /**
-   * button 大小，默认 'normal'
+   * Checkbox 大小，默认 'normal'
    */
   size?: SizeType;
   className?: string;
