@@ -12,27 +12,24 @@ export default {
   // },
 } as ComponentMeta<typeof Checkbox>;
 
-export const Static: ComponentStory<typeof Checkbox> = () => {
-  const [checked, setChecked] = React.useState(false);
+export const Static: ComponentStory<typeof Checkbox> = () => <Checkbox>Checkbox (非受控)</Checkbox>;
+Static.storyName = '静态示例';
+
+export const Dynamic: ComponentStory<typeof Checkbox> = (args) => {
+  const [checked, setChecked] = React.useState(args.checked || args.defaultChecked || false);
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log('checked ?: ', e.target.checked);
     setChecked(e.target.checked);
   };
   return (
-    <Checkbox checked={checked} onChange={onChange}>
-      Checkbox
+    <Checkbox {...args} checked={checked} onChange={onChange}>
+      Checkbox (受控)
     </Checkbox>
   );
 };
-Static.storyName = '静态示例';
-
-/*
-export const Dynamic: ComponentStory<typeof Checkbox> = (args) => <Checkbox {...args}>Checkbox</Checkbox>;
 Dynamic.args = {
-  defaultChecked: true,
-  onChange: (checked: boolean) => {
-    console.log('Checkbox is checked ? ', checked);
-  },
+  defaultChecked: false,
+  checked: true,
+  size: 'normal',
 };
 Dynamic.storyName = '动态示例';
-*/

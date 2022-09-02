@@ -55,6 +55,12 @@ $checkbox-inner-border-width: 2px !default;
     }
   }
 
+  &.is-medium {
+    .checkbox-inner {
+      transform: scale(1.25);
+    }
+  }
+
   &.is-large {
     .checkbox-inner {
       transform: scale(1.5);
