@@ -15,6 +15,10 @@ export interface CheckboxProps {
    * Checkbox 大小，默认 'normal'
    */
   size?: SizeType;
+  /**
+   * 不可用
+   */
+  disabled?: boolean;
   className?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -27,7 +31,7 @@ const isBoolean = (val?: boolean): val is boolean => {
 };
 
 export const Checkbox: React.FC<React.PropsWithChildren<CheckboxProps>> = (props) => {
-  const { className, size, defaultChecked, checked, onChange, children } = props;
+  const { className, size, disabled, defaultChecked, checked, onChange, children } = props;
   const [_checked, setChecked] = useState<boolean>(isBoolean(checked) ? checked : !!defaultChecked);
   useEffect(() => {
     setChecked(isBoolean(checked) ? checked : false);
@@ -40,13 +44,13 @@ export const Checkbox: React.FC<React.PropsWithChildren<CheckboxProps>> = (props
     onChange && onChange(e);
   };
   const sClz = getSizeClass(size);
-  const clz = Classnames('checkbox', sClz, className);
+  const clz = Classnames('checkbox', sClz, { disabled }, className);
   const iClz = Classnames('checkbox-inner', { 'is-checked': _checked });
   console.log('checkbox::render', checked, _checked);
   return (
     <label className={clz}>
       <span className={iClz}></span>
-      <input type="checkbox" checked={_checked} onChange={_onChange} />
+      <input type="checkbox" checked={_checked} onChange={_onChange} disabled={disabled} />
       {children}
     </label>
   );

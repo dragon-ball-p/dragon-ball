@@ -16,10 +16,10 @@ $checkbox-inner-border-width: 2px !default;
     border: $checkbox-container-border-width solid $border;
 
     &.is-checked {
-      background: $primary;
+      background-color: $primary;
       border: 0;
 
-      &::before {
+      &::after {
         position: absolute;
         top: 44%;
         left: 18%;
@@ -64,6 +64,19 @@ $checkbox-inner-border-width: 2px !default;
   &.is-large {
     .checkbox-inner {
       transform: scale(1.5);
+    }
+  }
+
+  &.disabled,
+  &.disabled:hover {
+    cursor: default;
+
+    .checkbox-inner {
+      border-color: $border-light;
+    }
+
+    .checkbox-inner.is-checked {
+      background-color: $primary;
     }
   }
 }
