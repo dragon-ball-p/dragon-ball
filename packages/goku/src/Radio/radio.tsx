@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import Classnames from 'classnames';
 import { SizeType, getSizeClass } from '../config/size-type';
+import { RadioContext } from './context';
 
 export interface RadioProps {
   /**
-   * 指定默认的选中状态
+   * 单选框的值，用于比对是否选中
    */
-  defaultChecked?: boolean;
-  /**
-   * 指定选中状态，注：传入此值 Checkbox 将变为受控组件
-   */
-  checked?: boolean;
+  value: any;
   /**
    * Checkbox 大小，默认 'normal'
    */
@@ -20,37 +17,28 @@ export interface RadioProps {
    */
   disabled?: boolean;
   className?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const isBoolean = (val?: boolean): val is boolean => {
-  if (val === null || val === undefined) {
-    return false;
-  }
-  return true;
-};
-
 export const Radio: React.FC<React.PropsWithChildren<RadioProps>> = (props) => {
-  const { className, size, disabled, defaultChecked, checked, onChange, children } = props;
-  const [_checked, setChecked] = useState<boolean>(isBoolean(checked) ? checked : !!defaultChecked);
-  useEffect(() => {
-    setChecked(isBoolean(checked) ? checked : false);
-  }, [checked]);
+  const { className, value, size, disabled, children } = props;
+  const { name, value: _value, onChange } = useContext(RadioContext);
+  const _checked = value === _value;
   const _onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (!isBoolean(checked)) {
-      // 非受控组件
-      setChecked(e.target.checked);
-    }
-    onChange && onChange(e);
+    const _e = Object.create(e);
+    _e.target = {
+      ...e.target,
+      value,
+    };
+    onChange && onChange(_e);
   };
   const sClz = getSizeClass(size);
   const clz = Classnames('radio', sClz, { disabled }, className);
   const iClz = Classnames('radio-inner', { 'is-checked': _checked });
-  console.log('radio::render', checked, _checked);
+  console.log('radio::render', value, _value, _checked);
   return (
     <label className={clz}>
       <span className={iClz}></span>
-      <input type="radio" checked={_checked} onChange={_onChange} disabled={disabled} />
+      <input type="radio" name={name} checked={_checked} onChange={_onChange} disabled={disabled} />
       {children}
     </label>
   );
@@ -58,9 +46,5 @@ export const Radio: React.FC<React.PropsWithChildren<RadioProps>> = (props) => {
 
 Radio.displayName = 'Radio';
 Radio.defaultProps = {
-  defaultChecked: false,
   size: 'normal',
-  onChange: () => {
-    // do sth.
-  },
 };
