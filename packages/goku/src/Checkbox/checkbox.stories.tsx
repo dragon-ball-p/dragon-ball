@@ -4,7 +4,7 @@ import { Checkbox } from './checkbox';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Checkbox 按钮',
+  title: 'Checkbox 多选框',
   component: Checkbox,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   // argTypes: {
