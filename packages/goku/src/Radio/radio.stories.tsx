@@ -29,12 +29,12 @@ export const Static: ComponentStory<typeof Radio> = () => {
 Static.storyName = '静态示例';
 
 export const Dynamic: ComponentStory<typeof Radio> = (args) => {
-  const one = { name: '一' };
-  const two = { age: 2 };
-  const three = { address: 'road 1' };
+  // 注意，使用函数组件时，要保证 value 的不可变
+  const values = React.useMemo(() => [{ name: '一' }, { age: 2 }, { address: 'road 1' }], []);
+  const [one, two, three] = values;
   const [value, setValue] = React.useState<any>(two);
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('checked ?: ', e.target.checked);
+    console.log('checked ?: ', e.target.checked, e.target.value);
     setValue(e.target.value);
   };
   return (

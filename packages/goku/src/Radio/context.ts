@@ -1,4 +1,4 @@
-import React, { createContext, useState, useMemo, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 
 interface IRadioContext {
   name: string;
@@ -17,30 +17,23 @@ export const RadioContext = createContext<IRadioContext>({
 export function useRadioContext(params: Partial<IRadioContext> & { name: string; defaultValue: any }): IRadioContext {
   const { name, defaultValue, value, onChange } = params;
 
-  const [_value, setValue] = useState(value === undefined ? defaultValue : value);
+  // value 不为 undefined 时，认定为受控组件
+  // 受控时，状态值由外部控制，非受控时，状态值由内部维护
+  const isControl = value !== undefined;
 
-  useEffect(() => {
-    setValue(value);
-  }, [value]);
+  const [_value, setValue] = useState(!isControl ? defaultValue : value);
 
-  const _onChange = useMemo(() => {
-    return (e: React.ChangeEvent<HTMLInputElement>) => {
-      console.log('____', e.target);
-      console.log('___2_', e.target.value);
-      if (value === undefined) {
-        // 非受控组件
-        setValue(e.target.value);
-      }
-      onChange && onChange(e);
-    };
-  }, [onChange, value]);
+  const _onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!isControl) {
+      // 非受控组件
+      setValue(e.target.value);
+    }
+    onChange && onChange(e);
+  };
 
-  return useMemo(() => {
-    const ctx = {
-      name,
-      onChange: _onChange,
-      value: _value,
-    };
-    return ctx;
-  }, [_value, name, _onChange]);
+  return {
+    name,
+    onChange: _onChange,
+    value: isControl ? value : _value,
+  };
 }

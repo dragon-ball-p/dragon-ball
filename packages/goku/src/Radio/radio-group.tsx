@@ -17,7 +17,7 @@ export const RadioGroup: React.FC<React.PropsWithChildren<RadioGroupProps>> = (p
 
   const clz = Classnames('radio-group', className);
 
-  console.log('RadioGroup::render');
+  console.log('RadioGroup::render', name, defaultValue, value);
   return (
     <RadioContext.Provider value={ctx}>
       <div className={clz} {...others}>
