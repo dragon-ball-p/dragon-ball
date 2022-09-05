@@ -80,3 +80,9 @@ $checkbox-inner-border-width: 2px !default;
     }
   }
 }
+
+.checkbox-group {
+  .checkbox:not(:first-child) {
+    margin-left: 1rem;
+  }
+}

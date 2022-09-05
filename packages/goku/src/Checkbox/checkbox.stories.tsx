@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Checkbox } from './checkbox';
+import { CheckboxGroup } from './checkbox-group';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -12,7 +13,17 @@ export default {
   // },
 } as ComponentMeta<typeof Checkbox>;
 
-export const Static: ComponentStory<typeof Checkbox> = () => <Checkbox>Checkbox (非受控)</Checkbox>;
+export const Static: ComponentStory<typeof Checkbox> = () => {
+  return (
+    <div>
+      <Checkbox>Checkbox (非受控)</Checkbox>
+
+      <div>
+        <CheckboxGroup items={['one', 'two', 'three', 'four', 'five']} defaultValue={['two', 'four']}></CheckboxGroup>
+      </div>
+    </div>
+  );
+};
 Static.storyName = '静态示例';
 
 export const Dynamic: ComponentStory<typeof Checkbox> = (args) => {

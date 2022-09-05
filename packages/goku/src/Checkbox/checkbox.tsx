@@ -37,11 +37,16 @@ export const Checkbox: React.FC<React.PropsWithChildren<CheckboxProps>> = (props
     setChecked(isBoolean(checked) ? checked : false);
   }, [checked]);
   const _onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const _e = Object.create(e);
+    _e.target = {
+      ...e.target,
+      value: children,
+    };
     if (!isBoolean(checked)) {
       // 非受控组件
-      setChecked(e.target.checked);
+      setChecked(_e.target.checked);
     }
-    onChange && onChange(e);
+    onChange && onChange(_e);
   };
   const sClz = getSizeClass(size);
   const clz = Classnames('checkbox', sClz, { disabled }, className);
