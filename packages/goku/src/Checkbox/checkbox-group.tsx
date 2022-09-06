@@ -13,7 +13,7 @@ export interface CheckboxGroupProps {
 }
 
 export const CheckboxGroup: React.FC<CheckboxGroupProps> = (props) => {
-  const { defaultValue, value, onChange, className, items, ...others } = props;
+  const { defaultValue, value, items, disabled, onChange, className, ...others } = props;
 
   const clz = Classnames('checkbox-group');
 
@@ -34,7 +34,7 @@ export const CheckboxGroup: React.FC<CheckboxGroupProps> = (props) => {
                 const { checked, onChange: innerOnChange } = value;
                 const isChecked = checked.includes(item);
                 return (
-                  <Checkbox className={className} onChange={innerOnChange} checked={isChecked}>
+                  <Checkbox className={className} disabled={disabled} onChange={innerOnChange} checked={isChecked}>
                     {item}
                   </Checkbox>
                 );
