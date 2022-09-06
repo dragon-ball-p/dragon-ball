@@ -3,6 +3,8 @@ $checkbox-container-border-width: 1px !default;
 $checkbox-inner-width: 0.5rem !default;
 $checkbox-inner-height: 1rem !default;
 $checkbox-inner-border-width: 2px !default;
+$checkbox-indeterminate-width: 0.8rem !default;
+$checkbox-indeterminate-border-width: 3px !default;
 
 
 .checkbox {
@@ -33,6 +35,21 @@ $checkbox-inner-border-width: 2px !default;
         transform: rotate(45deg) translate(-50%, -50%);
       }
     }
+
+    &.indeterminate {
+      border-color: $primary;
+
+      &::after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: block;
+        width: $checkbox-indeterminate-width;
+        content: '';
+        border-top: $checkbox-indeterminate-border-width solid $primary;
+        transform: translate(-50%, -50%);
+      }
+    }
   }
 
   input {
@@ -46,6 +63,14 @@ $checkbox-inner-border-width: 2px !default;
 
     .checkbox-inner.is-checked {
       background-color: $primary-dark;
+    }
+
+    .checkbox-inner.indeterminate {
+      border-color: $primary-dark;
+    }
+
+    .checkbox-inner.indeterminate::after {
+      border-color: $primary-dark;
     }
   }
 

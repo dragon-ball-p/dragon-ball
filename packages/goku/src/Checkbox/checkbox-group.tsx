@@ -6,9 +6,10 @@ import { CheckboxGroupContext, useCheckboxGroupContext } from './context';
 export interface CheckboxGroupProps {
   defaultValue?: string[];
   value?: string[];
-  onChange?: (checkList: string[], isAll: boolean) => void;
-  className?: string;
   items: string[];
+  disabled?: boolean;
+  className?: string;
+  onChange?: (checkList: string[], isAll: boolean) => void;
 }
 
 export const CheckboxGroup: React.FC<CheckboxGroupProps> = (props) => {
@@ -48,8 +49,9 @@ export const CheckboxGroup: React.FC<CheckboxGroupProps> = (props) => {
 
 CheckboxGroup.displayName = 'CheckboxGroup';
 CheckboxGroup.defaultProps = {
+  items: [],
+  disabled: false,
   onChange: function () {
     // do sth.
   },
-  items: [],
 };

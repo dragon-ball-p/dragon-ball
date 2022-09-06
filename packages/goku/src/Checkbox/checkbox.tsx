@@ -19,6 +19,10 @@ export interface CheckboxProps {
    * 不可用
    */
   disabled?: boolean;
+  /**
+   * 展示部分选中时的样式
+   */
+  indeterminate?: boolean;
   className?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -31,7 +35,7 @@ const isBoolean = (val?: boolean): val is boolean => {
 };
 
 export const Checkbox: React.FC<React.PropsWithChildren<CheckboxProps>> = (props) => {
-  const { className, size, disabled, defaultChecked, checked, onChange, children } = props;
+  const { className, indeterminate, size, disabled, defaultChecked, checked, onChange, children } = props;
 
   const isControl = isBoolean(checked);
 
@@ -58,7 +62,7 @@ export const Checkbox: React.FC<React.PropsWithChildren<CheckboxProps>> = (props
   };
   const sClz = getSizeClass(size);
   const clz = Classnames('checkbox', sClz, { disabled }, className);
-  const iClz = Classnames('checkbox-inner', { 'is-checked': _checked });
+  const iClz = Classnames('checkbox-inner', { 'is-checked': _checked, indeterminate });
   console.log('checkbox::render', checked, _checked, children);
   return (
     <label className={clz}>
@@ -72,6 +76,7 @@ export const Checkbox: React.FC<React.PropsWithChildren<CheckboxProps>> = (props
 Checkbox.displayName = 'Checkbox';
 Checkbox.defaultProps = {
   defaultChecked: false,
+  indeterminate: false,
   size: 'normal',
   onChange: () => {
     // do sth.

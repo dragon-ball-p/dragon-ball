@@ -44,9 +44,10 @@ export const Dynamic: ComponentStory<typeof Checkbox> = (args) => {
     setAllChecked(isAllChecked);
     setCheckedList(checkedList);
   };
+  const indeterminate = checkedList.length > 0 && checkedList.length !== items.length;
   return (
     <div>
-      <Checkbox checked={allChecked} onChange={onChange}>
+      <Checkbox checked={allChecked} indeterminate={indeterminate} onChange={onChange}>
         全选
       </Checkbox>
       <CheckboxGroup value={checkedList} onChange={onGroupChange} items={items} />
