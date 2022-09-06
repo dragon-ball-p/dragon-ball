@@ -11,6 +11,7 @@ export default {
   // argTypes: {
   //   backgroundColor: { control: 'color' },
   // },
+  subcomponents: { CheckboxGroup },
 } as ComponentMeta<typeof Checkbox>;
 
 export const Static: ComponentStory<typeof Checkbox> = () => {
@@ -27,15 +28,29 @@ export const Static: ComponentStory<typeof Checkbox> = () => {
 Static.storyName = '静态示例';
 
 export const Dynamic: ComponentStory<typeof Checkbox> = (args) => {
-  const [checked, setChecked] = React.useState(args.checked || args.defaultChecked || false);
+  const items = ['one', 'two', 'three', 'four', 'five'];
+  const [allChecked, setAllChecked] = React.useState(args.checked || args.defaultChecked || false);
+  const [checkedList, setCheckedList] = React.useState<string[]>(allChecked ? items.filter((item) => item) : []);
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('checked ?: ', e.target.checked);
-    setChecked(e.target.checked);
+    if (e.target.checked) {
+      setCheckedList(items.filter((item) => item));
+    } else {
+      setCheckedList([]);
+    }
+    setAllChecked(e.target.checked);
+  };
+  const onGroupChange = (checkedList: string[], isAllChecked: boolean) => {
+    console.log('onGroupChange::', checkedList, isAllChecked);
+    setAllChecked(isAllChecked);
+    setCheckedList(checkedList);
   };
   return (
-    <Checkbox {...args} checked={checked} onChange={onChange}>
-      Checkbox (受控)
-    </Checkbox>
+    <div>
+      <Checkbox checked={allChecked} onChange={onChange}>
+        全选
+      </Checkbox>
+      <CheckboxGroup value={checkedList} onChange={onGroupChange} items={items} />
+    </div>
   );
 };
 Dynamic.args = {
