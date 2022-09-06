@@ -32,17 +32,25 @@ const isBoolean = (val?: boolean): val is boolean => {
 
 export const Checkbox: React.FC<React.PropsWithChildren<CheckboxProps>> = (props) => {
   const { className, size, disabled, defaultChecked, checked, onChange, children } = props;
-  const [_checked, setChecked] = useState<boolean>(isBoolean(checked) ? checked : !!defaultChecked);
+
+  const isControl = isBoolean(checked);
+
+  // 若全部改为受控实现，可不使用 useState，状态变更时可减少一次 render
+  const [_checked, setChecked] = useState<boolean>(isControl ? checked : !!defaultChecked);
+
   useEffect(() => {
-    setChecked(isBoolean(checked) ? checked : false);
-  }, [checked]);
+    if (isControl) {
+      setChecked(checked);
+    }
+  }, [isControl, checked]);
+
   const _onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const _e = Object.create(e);
     _e.target = {
       ...e.target,
       value: children,
     };
-    if (!isBoolean(checked)) {
+    if (!isControl) {
       // 非受控组件
       setChecked(_e.target.checked);
     }
@@ -51,7 +59,7 @@ export const Checkbox: React.FC<React.PropsWithChildren<CheckboxProps>> = (props
   const sClz = getSizeClass(size);
   const clz = Classnames('checkbox', sClz, { disabled }, className);
   const iClz = Classnames('checkbox-inner', { 'is-checked': _checked });
-  console.log('checkbox::render', checked, _checked);
+  console.log('checkbox::render', checked, _checked, children);
   return (
     <label className={clz}>
       <span className={iClz}></span>

@@ -26,6 +26,12 @@ export const useCheckboxGroupContext = (params: CheckboxGroupContextParams): Che
 
   const [checked, setChecked] = useState(!isControl ? defaultValue || [] : value);
 
+  React.useEffect(() => {
+    if (isControl) {
+      setChecked(value);
+    }
+  }, [isControl, value]);
+
   const _onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const _checked = checked.includes(e.target.value)
       ? checked.filter((item) => item !== e.target.value)
