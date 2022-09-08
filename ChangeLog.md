@@ -1,10 +1,27 @@
-# [](https://github.com/dragon-ball-p/dragon-ball/compare/v0.1.1-alpha.0...v) (2022-09-02)
+# [](https://github.com/dragon-ball-p/dragon-ball/compare/v0.1.1-alpha.0...v) (2022-09-08)
+
+
+### Bug Fixes
+
+* 修复 checkbox group 受控模式下异常的问题 ([79dff38](https://github.com/dragon-ball-p/dragon-ball/commit/79dff388dfdd38af16e970a120df9fa28c1c37e8))
 
 
 ### Features
 
 * 初步完成 Checkbox 组件 ([4ffabb4](https://github.com/dragon-ball-p/dragon-ball/commit/4ffabb471661bdc780d5b1b41523e7ede05e2b38))
+* 添加 Checkbox Group 组件 ([df0a137](https://github.com/dragon-ball-p/dragon-ball/commit/df0a1374e17205ae7f7b81e14b177e3f0ff000d4))
+* checkbox 添加 disabled 功能 ([d02d8aa](https://github.com/dragon-ball-p/dragon-ball/commit/d02d8aa376579de8ede0cf70d7bc8747c5500eba))
 * checkbox 添加非受控模式 ([298e180](https://github.com/dragon-ball-p/dragon-ball/commit/298e180fa1b9953787412124500c523e52aa4525))
+* checkbox 添加选中部分的样式 ([5771cb5](https://github.com/dragon-ball-p/dragon-ball/commit/5771cb512b459bda7f6729e2d536c963ec99bb3b))
+* checkbox group 添加 disabled 属性 ([569830b](https://github.com/dragon-ball-p/dragon-ball/commit/569830b5c7ed0151f0c66cd3b8cc031abf74497d))
+* datapicker ([1568a60](https://github.com/dragon-ball-p/dragon-ball/commit/1568a60f8c873bcd8c35541041796fe96893353a))
+* radio ([895e2ef](https://github.com/dragon-ball-p/dragon-ball/commit/895e2ef89c74362aa132342a9300beacff124f1d))
+* radio 非受控模式 ([f5f2763](https://github.com/dragon-ball-p/dragon-ball/commit/f5f2763689eb92b50f1c0bf07197d57ff3fabd06))
+
+
+### Performance Improvements
+
+* 优化 Radio 代码，修复受控时示例 ([680ba34](https://github.com/dragon-ball-p/dragon-ball/commit/680ba34b1034a14be71fe44839d542d43c225a1b))
 
 
 
